@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/07 09:22:16 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/07 17:35:33 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ echo "${GREEN}Starting minikube...${RESET}"
 
 for image in "${PODS[@]}"
 do
-	# echo $image
 	deploy $image
 done
 

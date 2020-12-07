@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/06 20:09:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/07 15:03:19 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/07 21:35:49 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,25 @@ RUN set -eux; \
 		apk update; \
 		apk upgrade; \
 		apk add --no-cache nginx openssl openssh; \
-		rm -rf /var/cache/apk/
+		rm -rf /var/cache/apk
+
+RUN set -eux; \
+		adduser -D -g 'www' www; \
+		mkdir /www; \
+		chown -R www:www /var/lib/nginx; \
+		chown -R www:www /www; \
+		mkdir -p /run/nginx
+
+COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
+COPY srcs/index.html /www/index.html
+
+# Set up Self-Signed SSL certificate
+RUN set -eux; \
+		mkdir /etc/ssl/nginx; \
+		openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+			-keyout /etc/ssl/private/nginx_private.key \
+			-out /etc/ssl/certs/nginx_public.crt \
+			-subj "/C=JP/ST=Tokyo/L=Minato-ku/O=42Tokyo/OU=ft_services/CN=localhost"
 
 # Install telegraf
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf

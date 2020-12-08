@@ -12,14 +12,24 @@ export -p
 
 ## minikube
 ```sh
+# addon の list 表示
 minikube addons list
+# dashboard 起動
 minikube dashboard
 ```
 
 ## SSL
 ```sh
-# in nginx
+# 証明書内容の確認 in nginx
 openssl s_client -connect localhost:443 -showcerts
+```
+
+## SSH
+```sh
+# sshd の daemon 起動
+/usr/sbin/sshd
+# sshd の daemon 終了
+kill `cat /var/run/sshd.pid'
 ```
 
 # References
@@ -37,9 +47,12 @@ openssl s_client -connect localhost:443 -showcerts
 
 ## Nginx
 - [nginx を docker で動かすときの Tips 3選 (foreground で起動する)](https://heartbeats.jp/hbblog/2014/07/3-tips-for-nginx-on-docker.html)
+- [can't run nginx in alpine linux (docker)](https://superuser.com/questions/1306656/cant-run-nginx-in-alpine-linux-docker)
+- [Alpine Nginx with PHP](https://wiki.alpinelinux.org/wiki/Nginx_with_PHP)
 
 ## SSL
 - [opensslコマンドでcsrファイルを作成する際のサーバ名等をコマンドラインオプションで指定する](https://vogel.at.webry.info/201503/article_9.html)
+- [opensslコマンドで証明書情報を確認したい](https://jp.globalsign.com/support/faq/07.html)
 
 ## k8s 関連
 ### MetalLB

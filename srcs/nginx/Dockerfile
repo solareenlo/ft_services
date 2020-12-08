@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/06 20:09:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/08 11:05:40 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/08 21:36:35 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
 RUN set -eux; \
 		apk update; \
 		apk upgrade; \
-		apk add --no-cache nginx openssl openssh; \
+		apk add nginx openssl openssh; \
 		rm -rf /var/cache/apk
 
 # Set up nginx
@@ -86,7 +86,7 @@ RUN set -eux; \
 
 EXPOSE 80 443 22
 
-COPY srcs/setup.sh /tmp/setup.sh
+COPY ./srcs/setup.sh /tmp/setup.sh
 
 RUN chmod +x /tmp/setup.sh
 

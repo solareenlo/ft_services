@@ -10,6 +10,28 @@
 export -p
 ```
 
+## docker
+```sh
+docker run -it --rm -p 80:80 -p 443:443 -p 22:22 my_nginx sh
+```
+
+## kubectl
+```sh
+# 全ての namespace の pod の一覧を表示
+kubectl get pods --all-namespaces
+# 現在動いている pod の一覧を表示
+kubectl get pods
+# 指定した pod の情報を表示
+kubectl get pods -l app=nginx
+# 指定した pod の詳しい情報を表示
+kubectl describe pod nginx
+# pod 削除
+kubectl delete -f srcs/nginx/nginx.yaml
+kubectl delete deployment nginx
+# pod 追加
+kubectl apply -f srcs/nginx/nginx.yaml
+```
+
 ## minikube
 ```sh
 # addon の list 表示
@@ -33,6 +55,17 @@ kill `cat /var/run/sshd.pid'
 ```
 
 # References
+## k8s yaml 関連
+- [Deploymentを使用してステートレスアプリケーションを実行する](https://kubernetes.io/ja/docs/tasks/run-application/run-stateless-application-deployment/)
+- `---` は複数のマニフェストを1つのファイルに書くためのセパレーター．
+- [Kubernetesの4つのリソース - Pod/ReplicaSet/Deployment/Service](https://news.mynavi.jp/itsearch/article/devsoft/4358)
+- [Deployment](https://kubernetes.io/ja/docs/concepts/workloads/controllers/deployment/)
+- [LabelとAnnotation, Service->Deployment](https://tomokazu-kozuma.com/on-the-distinction-between-label-and-annotation-of-kubernetes/)
+- [マニフェストファイルで使われるLabelとSelectorについて](https://gadgeterkun.hatenablog.com/entry/20190716/1563228000)
+- [【Kubernetes】5種類のServiceタイプを解説する](https://ameblo.jp/bakery-diary/entry-12614040050.html)
+- [Serviceの定義](https://kubernetes.io/ja/docs/concepts/services-networking/service/#serviceの定義)
+- [Kubernetesの apiVersion に何を書けばいいか](https://qiita.com/soymsk/items/69aeaa7945fe1f875822)
+
 ## Container
 ### Telegraf
 - Telegrafとは，2015/06/19 に発表された InfluxDB 専用の Go 言語で書かれたメトリクスコレクタ(エージェント)で，fluentd などの中間層をはさまず，InfluxDB に最適化されたデータ格納をしてくれるエージェントのこと．
@@ -53,6 +86,7 @@ kill `cat /var/run/sshd.pid'
 ## SSL
 - [opensslコマンドでcsrファイルを作成する際のサーバ名等をコマンドラインオプションで指定する](https://vogel.at.webry.info/201503/article_9.html)
 - [opensslコマンドで証明書情報を確認したい](https://jp.globalsign.com/support/faq/07.html)
+- [〔パスワード認証：rootログイン許可〕](http://bluearth.cocolog-nifty.com/blog/2018/08/root-7716.html)
 
 ## k8s 関連
 ### MetalLB
@@ -81,6 +115,7 @@ kill `cat /var/run/sshd.pid'
 - [Kubectl Command Reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
 - [Reference Docs for Kubectl](https://kubectl.docs.kubernetes.io/references/kubectl/)
 - [kubernetes/kubectl](https://github.com/kubernetes/kubectl)
+- [How to Run Locally Built Docker Images in Kubernetes](https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d)
 
 ### Kustomize
 - Kustomize とは，Kubernetes の yaml を効率よく運用するのに特化したパッケージングツールのこと．

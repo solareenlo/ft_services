@@ -60,6 +60,7 @@ kill `cat /var/run/sshd.pid'
 
 # References
 ## k8s yaml 関連
+- [kubernetesのConfigMapを理解する](https://qiita.com/oguogura/items/68741b91b70962081504)
 - [Deploymentを使用してステートレスアプリケーションを実行する](https://kubernetes.io/ja/docs/tasks/run-application/run-stateless-application-deployment/)
 - `---` は複数のマニフェストを1つのファイルに書くためのセパレーター．
 - [Kubernetesの4つのリソース - Pod/ReplicaSet/Deployment/Service](https://news.mynavi.jp/itsearch/article/devsoft/4358)
@@ -98,6 +99,7 @@ kill `cat /var/run/sshd.pid'
 - MetalLB とは，Google が作ったベアメタル Kubenetes 環境でも使える External Load Balancer のこと．
 - [metallb/metallb](https://github.com/metallb/metallb)
 - [Kubernetes NodePort vs LoadBalancer vs Ingress? When should I use what?](https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0)
+- [【手順あり】MetalLBの使い方から動きまで解説します](https://blog.framinal.life/entry/2020/04/16/022042#MetalLBの仕組みARPNDPBGP)
 
 #### ロードバランサー
 - [ーロードバランサの種類L4,L7ってどう違うの？](https://academy.gmocloud.com/qa/20170810/4591)

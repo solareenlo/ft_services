@@ -23,8 +23,12 @@ kubectl get pods --all-namespaces
 kubectl get pods
 # 指定した pod の情報を表示
 kubectl get pods -l app=nginx
+kubectl get pods -l app=nginx -o wide
+kubectl get pods -l app=nginx -o yaml
 # 指定した pod の詳しい情報を表示
 kubectl describe pod nginx
+# 指定した service の情報を表示
+kubectl get svc nginx
 # pod 削除
 kubectl delete -f srcs/nginx/nginx.yaml
 kubectl delete deployment nginx
@@ -63,6 +67,7 @@ kill `cat /var/run/sshd.pid'
 - [LabelとAnnotation, Service->Deployment](https://tomokazu-kozuma.com/on-the-distinction-between-label-and-annotation-of-kubernetes/)
 - [マニフェストファイルで使われるLabelとSelectorについて](https://gadgeterkun.hatenablog.com/entry/20190716/1563228000)
 - [【Kubernetes】5種類のServiceタイプを解説する](https://ameblo.jp/bakery-diary/entry-12614040050.html)
+- [Serviceの公開 (Serviceのタイプ)](https://kubernetes.io/ja/docs/concepts/services-networking/service/#publishing-services-service-types)
 - [Serviceの定義](https://kubernetes.io/ja/docs/concepts/services-networking/service/#serviceの定義)
 - [Kubernetesの apiVersion に何を書けばいいか](https://qiita.com/soymsk/items/69aeaa7945fe1f875822)
 
@@ -92,6 +97,7 @@ kill `cat /var/run/sshd.pid'
 ### MetalLB
 - MetalLB とは，Google が作ったベアメタル Kubenetes 環境でも使える External Load Balancer のこと．
 - [metallb/metallb](https://github.com/metallb/metallb)
+- [Kubernetes NodePort vs LoadBalancer vs Ingress? When should I use what?](https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0)
 
 #### ロードバランサー
 - [ーロードバランサの種類L4,L7ってどう違うの？](https://academy.gmocloud.com/qa/20170810/4591)
@@ -134,6 +140,9 @@ kill `cat /var/run/sshd.pid'
 - Kubernetes とは，コンテナの運用管理と自動化を目的に設計されたオープンソースシステムのこと．
 - [kubernetes/kubernetes](https://github.com/kubernetes/kubernetes)
 - [kubernetes/examples](https://github.com/kubernetes/examples)
+- [コンテナを使いこなすための心強い味方! 「Kubernetes」(後編)](https://thinkit.co.jp/article/17629)
+- [コンテナを使いこなすための心強い味方!「Kubernetes」(中編)](https://thinkit.co.jp/article/17535)
+- [コンテナを使いこなすための心強い味方!「Kubernetes」(前編)](https://thinkit.co.jp/article/17453)
 
 ### Shellscript
 - [初心者向けシェルスクリプトの基本コマンドの紹介](https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337)

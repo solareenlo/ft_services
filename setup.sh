@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/08 21:22:02 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/09 19:37:38 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,22 @@ RESET='\033[0m'
 echo "${GREEN}Starting minikube...${RESET}"
 
 # delete minikube local status
-# minikube delete
+minikube delete
 
 # start minikube
-# minikube start --driver=virtualbox
+minikube start --driver=virtualbox
+
+# Delete metallb
+kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
+kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
+kubectl delete -f srcs/metallb/metallb.yaml
+
+
+# Install metallb
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+kubectl apply -f srcs/metallb/metallb.yaml
 
 # To point your shell to minikube's docker-daemon
 eval $(minikube -p minikube docker-env)

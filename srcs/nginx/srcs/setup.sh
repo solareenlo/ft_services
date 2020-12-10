@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/08 19:13:13 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/09 19:08:10 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/09 21:27:27 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ adduser -D "$SSH_USER"
 echo "$SSH_USER:$SSH_PASSWORD" | chpasswd
 
 # sshd is the daemon program for ssh connection
-/usr/sbin/sshd
+/usr/sbin/sshd -D
 
 # For normal prduction (on a server), use the default daemon on;
 # In this case of Docker containers(or for debugging), use the daemon off;

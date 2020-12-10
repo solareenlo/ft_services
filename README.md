@@ -34,6 +34,9 @@ kubectl delete -f srcs/nginx/nginx.yaml
 kubectl delete deployment nginx
 # pod 追加
 kubectl apply -f srcs/nginx/nginx.yaml
+# 動いてる pod の中に入る
+kubectl exec --stdin --tty nginx-??? -- /bin/sh
+kubectl exec -it nginx-??? -- /bin/sh
 ```
 
 ## minikube
@@ -83,6 +86,8 @@ kill `cat /var/run/sshd.pid'
 - Alipine とは，組み込み系でよく使われている BusyBox と musl をベースにした Linux ディストリビューションのこと．
 - https://pkgs.alpinelinux.org/packages
 - [Alpine Linux の Edge とか Testing とは何なのか](https://qiita.com/Mister_K/items/1c03b5f794d051d1d82d)
+- [Alpine LinuxベースでDockerイメージを作るときのapkのコマンドめも](https://tomcky.hatenadiary.jp/entry/2018/02/20/203657)
+- [Alpine Linux - Ignoring APKINDEX : Bad file Descriptor](https://unix.stackexchange.com/questions/478182/alpine-linux-ignoring-apkindex-bad-file-descriptor)
 
 ## Nginx
 - [nginx を docker で動かすときの Tips 3選 (foreground で起動する)](https://heartbeats.jp/hbblog/2014/07/3-tips-for-nginx-on-docker.html)

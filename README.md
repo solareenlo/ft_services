@@ -62,6 +62,11 @@ kill `cat /var/run/sshd.pid'
 ```
 
 # References
+## Dockerfile 関連
+### supervisor
+- [Supervisor: A Process Control System](http://supervisord.org/index.html)
+- [Dockerでsupervisorを使う時によくハマる点まとめ](https://techracho.bpsinc.jp/morimorihoge/2017_06_05/40936)
+
 ## k8s yaml 関連
 - [kubernetesのConfigMapを理解する](https://qiita.com/oguogura/items/68741b91b70962081504)
 - [Deploymentを使用してステートレスアプリケーションを実行する](https://kubernetes.io/ja/docs/tasks/run-application/run-stateless-application-deployment/)
@@ -88,6 +93,9 @@ kill `cat /var/run/sshd.pid'
 - [Alpine Linux の Edge とか Testing とは何なのか](https://qiita.com/Mister_K/items/1c03b5f794d051d1d82d)
 - [Alpine LinuxベースでDockerイメージを作るときのapkのコマンドめも](https://tomcky.hatenadiary.jp/entry/2018/02/20/203657)
 - [Alpine Linux - Ignoring APKINDEX : Bad file Descriptor](https://unix.stackexchange.com/questions/478182/alpine-linux-ignoring-apkindex-bad-file-descriptor)
+- [Alpine Wordpress Php/wiki.alpine](https://wiki.alpinelinux.org/wiki/WordPress#Install_lighttpd.2C_PHP.2C_and_MySql)
+- [adduser/wiki.alpine](https://wiki.alpinelinux.org/wiki/Setting_up_a_new_user#adduser)
+- [Alpine Linux で ユーザー/グループ を 追加/削除/一覧 する 方法](https://garafu.blogspot.com/2019/07/operate-user-group-on-alpine.html#adduser)
 
 ## Nginx
 - [nginx を docker で動かすときの Tips 3選 (foreground で起動する)](https://heartbeats.jp/hbblog/2014/07/3-tips-for-nginx-on-docker.html)

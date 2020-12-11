@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/06 20:09:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/10 09:21:55 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/11 19:10:48 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,14 @@ FROM alpine:3.12
 
 LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
 
-# Install nginx, ssl, ssh, php
+# Install nginx, ssl, ssh
 RUN set -eux; \
 		apk update; \
 		apk add --no-cache \
 			nginx \
 			openssl \
 			openssh \
-			supervisor \
-			# php7-fpm \
-			# php7-json \
-			# php7-mysqli \
-		; \
-		rm -rf /var/cache/apk; \
-		mkdir /var/cache/apk
+			supervisor
 
 # Set up nginx
 RUN set -eux; \

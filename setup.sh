@@ -6,20 +6,22 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/10 09:21:35 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/11 13:30:37 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/bash
 
 PODS=(nginx)
+PODS+=(wordpress)
 
-function deploy()
+function docker_build()
 {
 	errlog=$(mktemp)
-	docker build -t ft_services/$1 ./srcs/$1
+	kubectl get pods -l app=$1 2> $errlog
+	docker build -t ft_services/$1 $2 ./srcs/$1
 	sleep 1
-	kubectl apply -f ./srcs/$1/$1.yaml
+	# kubectl apply -f ./srcs/$1/$1.yaml
 	if [[ -s $errlog ]]; then
 		echo "$1 Pod started!"
 	else
@@ -44,10 +46,10 @@ RESET='\033[0m'
 echo "${GREEN}Starting minikube...${RESET}"
 
 # delete minikube local status
-# minikube delete
+minikube delete
 
 # start minikube
-# minikube start --driver=virtualbox
+minikube start --driver=virtualbox
 
 # Delete metallb
 # kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
@@ -56,18 +58,20 @@ echo "${GREEN}Starting minikube...${RESET}"
 
 
 # Install metallb
-# kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
-# kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
-# kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
-# kubectl apply -f srcs/metallb/metallb.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+kubectl apply -f srcs/metallb/metallb.yaml
 
 # To point your shell to minikube's docker-daemon
 eval $(minikube -p minikube docker-env)
 
 for image in "${PODS[@]}"
 do
-	deploy $image
+	docker_build $image
 done
+
+kubectl apply -k srcs/
 
 echo "$WHITE
 ███████╗████████╗     ███████╗███████╗██████╗ ██╗   ██╗██╗ ██████╗███████╗███████╗

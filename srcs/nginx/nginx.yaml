@@ -1,7 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    nginx.yaml                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/12/10 10:50:05 by tayamamo          #+#    #+#              #
+#    Updated: 2020/12/11 21:13:14 by tayamamo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 apiVersion: v1
 kind: Service
 metadata:
   name: nginx
+  annotations:
+    metallb.universe.tf/address-pool: default
 spec:
   type: LoadBalancer
   ports:
@@ -40,7 +54,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ft_services/nginx
+        image: ft_services/nginx:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
           name: http
@@ -48,7 +63,6 @@ spec:
           name: https
         - containerPort: 22
           name: ssh
-        imagePullPolicy: IfNotPresent
         env:
         - name: SSH_USER
           value: admin

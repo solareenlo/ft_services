@@ -87,6 +87,10 @@ kill `cat /var/run/sshd.pid'
 - https://www.influxdata.com/time-series-platform/telegraf/
 - [influxdata/influxdata-docker/telegraf/1.16/alpine/Dockerfile](https://github.com/influxdata/influxdata-docker/blob/da900619b14ddbf221e639b5108a7219af8b0bbc/telegraf/1.16/alpine/Dockerfile)
 
+### Wordpress
+- [etopian/alpine-php-wordpress](https://github.com/etopian/alpine-php-wordpress)
+- [TrafeX/docker-wordpress](https://github.com/TrafeX/docker-wordpress)
+
 ### Alpine
 - Alipine とは，組み込み系でよく使われている BusyBox と musl をベースにした Linux ディストリビューションのこと．
 - https://pkgs.alpinelinux.org/packages

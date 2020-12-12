@@ -68,6 +68,8 @@ kill `cat /var/run/sshd.pid'
 - [Dockerでsupervisorを使う時によくハマる点まとめ](https://techracho.bpsinc.jp/morimorihoge/2017_06_05/40936)
 
 ## k8s yaml 関連
+- [Secrets/kubernetes/docs](https://kubernetes.io/ja/docs/concepts/configuration/secret/)
+- [【Kubernetes】Secretとは（概要から生成・編集・利用方法まで）](https://ameblo.jp/bakery-diary/entry-12615574380.html)
 - [kubernetesのConfigMapを理解する](https://qiita.com/oguogura/items/68741b91b70962081504)
 - [Deploymentを使用してステートレスアプリケーションを実行する](https://kubernetes.io/ja/docs/tasks/run-application/run-stateless-application-deployment/)
 - `---` は複数のマニフェストを1つのファイルに書くためのセパレーター．

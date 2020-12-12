@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 10:50:05 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/11 23:28:24 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/12 15:51:06 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ spec:
       containers:
       - name: nginx
         image: ft_services/nginx:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
           name: http

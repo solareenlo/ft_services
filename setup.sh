@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/11 13:30:37 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/12 16:45:18 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 
 PODS=(nginx)
 PODS+=(wordpress)
+PODS+=(mysql)
 
 function docker_build()
 {

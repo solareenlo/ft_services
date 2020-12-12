@@ -6,14 +6,14 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/11 21:13:25 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/11 23:28:48 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress
+  name: wordpress-service
   labels:
     app: wordpress
   annotations:
@@ -29,6 +29,7 @@ spec:
       protocol: TCP
 
 ---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -41,11 +42,13 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress
+  name: wordpress-deployment
 spec:
   replicas: 1
   selector:
@@ -57,9 +60,9 @@ spec:
         app: wordpress
     spec:
       containers:
-        - name: wordpress
-          image: ft_services/wordpress:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 5050
-              name: wordpress
+      - name: wordpress
+        image: ft_services/wordpress:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5050
+          name: wordpress

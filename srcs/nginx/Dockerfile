@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/06 20:09:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/11 19:10:48 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/12 13:14:40 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
 
 # Install nginx, ssl, ssh
 RUN set -eux; \
-		apk update; \
+		apk -U upgrade; \
 		apk add --no-cache \
 			nginx \
 			openssl \
@@ -25,15 +25,11 @@ RUN set -eux; \
 
 # Set up nginx
 RUN set -eux; \
-		adduser -D -g 'www' www; \
-		mkdir /www; \
-		chown -R www:www /var/lib/nginx; \
-		chown -R www:www /www; \
-		mkdir -p /run/nginx
+		mkdir -p /var/run/nginx
 
 COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
-COPY srcs/index.html /www/index.html
-COPY srcs/favicon.ico /www/favicon.ico
+COPY srcs/index.html /var/www/index.html
+COPY srcs/favicon.ico /var/www/favicon.ico
 
 # Generate Self-Signed SSL certificate
 RUN set -eux; \

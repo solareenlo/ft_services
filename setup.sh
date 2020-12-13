@@ -6,30 +6,21 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/12 16:45:18 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/13 17:42:13 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/bash
 
 PODS=(nginx)
-PODS+=(wordpress)
 PODS+=(mysql)
+PODS+=(wordpress)
 
 function docker_build()
 {
-	errlog=$(mktemp)
-	kubectl get pods -l app=$1 2> $errlog
-	docker build -t ft_services/$1 $2 ./srcs/$1
-	sleep 1
-	# kubectl apply -f ./srcs/$1/$1.yaml
-	if [[ -s $errlog ]]; then
-		echo "$1 Pod started!"
-	else
-		kubectl delete pod -n default -l app=$1
-		echo "Pod restarted!"
-	fi
-	rm -f $errlog
+	title="$(tr '[:lower:]' '[:upper:]' <<< ${1:0:1})${1:1}"
+	echo "🐳  Building Docker Image for ${title}"
+	docker build -t ft_services/$1 $2 ./srcs/$1 > /dev/null 2>&1
 	return 0
 }
 
@@ -44,13 +35,19 @@ CYAN='\033[36m'
 WHITE='\033[37m'
 RESET='\033[0m'
 
-echo "${GREEN}Starting minikube...${RESET}"
+echo "$WHITE
+███████╗████████╗     ███████╗███████╗██████╗ ██╗   ██╗██╗ ██████╗███████╗███████╗
+██╔════╝╚══██╔══╝     ██╔════╝██╔════╝██╔══██╗██║   ██║██║██╔════╝██╔════╝██╔════╝
+█████╗     ██║        ███████╗█████╗  ██████╔╝██║   ██║██║██║     █████╗  ███████╗
+██╔══╝     ██║        ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██║██║     ██╔══╝  ╚════██║
+██║        ██║███████╗███████║███████╗██║  ██║ ╚████╔╝ ██║╚██████╗███████╗███████║
+╚═╝        ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝╚══════╝╚══════╝$RESET"
 
 # delete minikube local status
 minikube delete
 
 # start minikube
-minikube start --driver=virtualbox
+minikube start --driver=virtualbox --disk-size=5000mb
 
 # Delete metallb
 # kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
@@ -59,29 +56,26 @@ minikube start --driver=virtualbox
 
 
 # Install metallb
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
-kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
-kubectl apply -f srcs/metallb/metallb.yaml
+echo "⚖️   Installing MetalLB"
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml > /dev/null 2>&1
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml > /dev/null 2>&1
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)" > /dev/null 2>&1
+kubectl apply -f srcs/metallb/metallb.yaml > /dev/null 2>&1
 
 # To point your shell to minikube's docker-daemon
 eval $(minikube -p minikube docker-env)
 
-for image in "${PODS[@]}"
-do
+for image in "${PODS[@]}"; do
 	docker_build $image
 done
 
-kubectl apply -k srcs/
-
-echo "$WHITE
-███████╗████████╗     ███████╗███████╗██████╗ ██╗   ██╗██╗ ██████╗███████╗███████╗
-██╔════╝╚══██╔══╝     ██╔════╝██╔════╝██╔══██╗██║   ██║██║██╔════╝██╔════╝██╔════╝
-█████╗     ██║        ███████╗█████╗  ██████╔╝██║   ██║██║██║     █████╗  ███████╗
-██╔══╝     ██║        ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██║██║     ██╔══╝  ╚════██║
-██║        ██║███████╗███████║███████╗██║  ██║ ╚████╔╝ ██║╚██████╗███████╗███████║
-╚═╝        ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
-$RESET"
+echo "⛵  Creating Deployments"
+kubectl apply -k srcs/ > /dev/null 2>&1
+for pod in "${PODS[@]}"; do
+	title="$(tr '[:lower:]' '[:upper:]' <<< ${pod:0:1})${pod:1}"
+	echo "🐋  $title Pod started!"
+done
 
 # open dashboard
+# echo "📊  Activating Minikube Dashboard"
 # minikube dashboard

@@ -5,17 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/12/12 11:28:16 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/12 17:02:17 by tayamamo         ###   ########.fr        #
+#    Created: 2020/12/13 05:33:55 by tayamamo          #+#    #+#              #
+#    Updated: 2020/12/13 19:03:12 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#!/bin/sh
+#!bin/sh
 
-nohup /tmp/initdb.sh > /dev/null 2>&1 &
+mysql_install_db --user=root --ldata=/var/lib/mysql
 
-sed -i 's/skip-networking/#skip-networking/g' /etc/my.cnf.d/mariadb-server.cnf
+cat > /tmp/sql << EOF
+USE mysql;
+FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY "$MYSQL_ROOT_PASSWORD" WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+ALTER USER 'root'@'localhost' IDENTIFIED BY '';
+DROP DATABASE IF EXISTS test;
+EOF
 
-mysql_install_db --user=mysql --ldata='/var/lib/mysql'
+/usr/bin/mysqld --user=root --console --init_file=/tmp/sql
 
-/usr/bin/mysqld_safe --datadir='/var/lib/mysql'
+rm /tmp/sql

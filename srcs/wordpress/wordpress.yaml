@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/12 19:45:35 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/13 21:35:51 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,12 +71,26 @@ spec:
         imagePullPolicy: Never
         name: wordpress
         env:
+        - name: PHP_CGI_FIX_PATHINFO
+          value: 0
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
-        - name: WORDPRESS_DB_PASSWORD
+        - name: DATABASE_NAME
+          value: wordpress
+        - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-pass
+              key: password
+        - name: USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-secret
+              key: username
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-secret
               key: password
         ports:
         - containerPort: 5050
@@ -88,3 +102,13 @@ spec:
       # - name: wordpress-persistent-storage
       #   persistentVolumeClaim:
       #     claimName: wp-pv-claim
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: wordpress-secret
+stringData:
+  username: username
+  password: password

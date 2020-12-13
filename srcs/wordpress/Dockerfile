@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 10:49:42 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/12 19:54:13 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/13 21:34:14 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
 RUN set -eux; \
 		apk -U upgrade; \
 		apk add --no-cache \
+			mysql-client \
 			php7 \
 			php7-fpm \
 			php7-mysqli \
@@ -27,8 +28,11 @@ RUN set -eux; \
 			php7-mbstring \
 			php7-zip \
 			php7-opcache \
+			php7-session \
+			php7-iconv \
 			nginx \
 			supervisor
+			# coreutils
 
 # Set up nginx
 RUN set -eux; \
@@ -48,8 +52,11 @@ RUN set -ex; \
 	tar -xzf /tmp/wordpress.tar.gz -C /var/www/; \
 	rm /tmp/wordpress.tar.gz
 
+COPY srcs/wp-config.php /var/www/wordpress/
+
 EXPOSE 5050
 
-COPY ./srcs/supervisor.ini /etc/supervisor.d/
+COPY srcs/supervisor.ini /etc/supervisor.d/
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor.d/supervisor.ini"]
+COPY srcs/setup.sh /tmp/
+CMD sh /tmp/setup.sh

@@ -62,12 +62,16 @@ kill `cat /var/run/sshd.pid'
 ```
 
 # References
+## sql
+- [Bind Addressの意味がようやく分かった](https://keens.github.io/blog/2016/02/24/bind_addressnoimigayouyakuwakatta/)
+
 ## Dockerfile 関連
 ### supervisor
 - [Supervisor: A Process Control System](http://supervisord.org/index.html)
 - [Dockerでsupervisorを使う時によくハマる点まとめ](https://techracho.bpsinc.jp/morimorihoge/2017_06_05/40936)
 
 ## k8s yaml 関連
+- [いい加減覚えよう。 `command > /dev/null 2>&1`の意味](https://qiita.com/ritukiii/items/b3d91e97b71ecd41d4ea)
 - [Secrets/kubernetes/docs](https://kubernetes.io/ja/docs/concepts/configuration/secret/)
 - [【Kubernetes】Secretとは（概要から生成・編集・利用方法まで）](https://ameblo.jp/bakery-diary/entry-12615574380.html)
 - [kubernetesのConfigMapを理解する](https://qiita.com/oguogura/items/68741b91b70962081504)

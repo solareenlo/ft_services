@@ -67,7 +67,6 @@ kill `cat /var/run/sshd.pid'
 
 ## Dockerfile 関連
 ### php/wordpress
-- [combro2k/dockerfiles/alpine-nginx-wordpress-php7](https://github.com/combro2k/dockerfiles/tree/master/alpine-nginx-wordpress-php7)
 - [Editing wp-config.php/wordpress](https://wordpress.org/support/article/editing-wp-config-php/)
 - [php extentions/wordpress](https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
 
@@ -99,6 +98,7 @@ kill `cat /var/run/sshd.pid'
 - [influxdata/influxdata-docker/telegraf/1.16/alpine/Dockerfile](https://github.com/influxdata/influxdata-docker/blob/da900619b14ddbf221e639b5108a7219af8b0bbc/telegraf/1.16/alpine/Dockerfile)
 
 ### Wordpress
+- [combro2k/dockerfiles/alpine-nginx-wordpress-php7](https://github.com/combro2k/dockerfiles/tree/master/alpine-nginx-wordpress-php7)
 - [etopian/alpine-php-wordpress](https://github.com/etopian/alpine-php-wordpress)
 - [TrafeX/docker-wordpress](https://github.com/TrafeX/docker-wordpress)
 

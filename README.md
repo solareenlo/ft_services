@@ -66,6 +66,9 @@ kill `cat /var/run/sshd.pid'
 - [Bind Addressの意味がようやく分かった](https://keens.github.io/blog/2016/02/24/bind_addressnoimigayouyakuwakatta/)
 
 ## Dockerfile 関連
+### php
+- [Editing wp-config.php/wordpress](https://wordpress.org/support/article/editing-wp-config-php/)
+- [php extentions/wordpress](https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
 ### supervisor
 - [Supervisor: A Process Control System](http://supervisord.org/index.html)
 - [Dockerでsupervisorを使う時によくハマる点まとめ](https://techracho.bpsinc.jp/morimorihoge/2017_06_05/40936)

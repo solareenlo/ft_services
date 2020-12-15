@@ -71,8 +71,9 @@ kill `cat /var/run/sshd.pid'
 - [php extentions/wordpress](https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
 
 ### supervisor
-- [Supervisor: A Process Control System](http://supervisord.org/index.html)
 - [Dockerでsupervisorを使う時によくハマる点まとめ](https://techracho.bpsinc.jp/morimorihoge/2017_06_05/40936)
+- [Superviso: Configuration File](http://supervisord.org/configuration.html)
+- [Supervisor: A Process Control System](http://supervisord.org/index.html)
 
 ## k8s yaml 関連
 - [いい加減覚えよう。 `command > /dev/null 2>&1`の意味](https://qiita.com/ritukiii/items/b3d91e97b71ecd41d4ea)

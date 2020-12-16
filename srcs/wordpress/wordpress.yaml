@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/13 21:35:51 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/16 00:09:39 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,7 @@ spec:
           name: wordpress
       #   volumeMounts:
       #   - name: wordpress-persistent-storage
-      #     mountPath: /var/www/wordpress
+      #     mountPath: /var/www/wp-config
       # volumes:
       # - name: wordpress-persistent-storage
       #   persistentVolumeClaim:

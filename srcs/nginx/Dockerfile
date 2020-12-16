@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/06 20:09:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/12 13:14:40 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/17 03:03:06 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,7 @@ RUN set -eux; \
 		apk add --no-cache \
 			nginx \
 			openssl \
-			openssh \
-			supervisor
+			openssh
 
 # Set up nginx
 RUN set -eux; \
@@ -90,6 +89,7 @@ COPY srcs/sshd_config /etc/ssh/
 
 EXPOSE 80 443 22
 
-COPY ./srcs/supervisor.ini /etc/supervisor.d/
+COPY srcs/setup.sh /tmp/
+RUN chmod +x /tmp/setup.sh
+CMD /tmp/setup.sh
 
-CMD /usr/bin/supervisord

@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/11 21:38:53 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/13 07:09:12 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/17 00:33:32 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,10 @@ RUN set -eux; \
 EXPOSE 3306
 
 COPY srcs/setup.sh /tmp/
-COPY srcs/initdb.sh /tmp/
-COPY srcs/wordpress.sql /tmp/
 COPY srcs/my.cnf /etc/
 
-RUN chmod +x /tmp/setup.sh; \
-	chmod +x /tmp/initdb.sh; \
-	chmod +x /tmp/wordpress.sql
+RUN chmod +x /tmp/setup.sh
+
+VOLUME /var/lib/mysql
 
 CMD /tmp/setup.sh

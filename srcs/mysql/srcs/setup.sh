@@ -1,16 +1,7 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    setup.sh                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/12/13 05:33:55 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/13 19:03:12 by tayamamo         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #!bin/sh
+
+MYSQL_ROOT_PASSWORD=password
+
 
 mysql_install_db --user=root --ldata=/var/lib/mysql
 
@@ -23,6 +14,4 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '';
 DROP DATABASE IF EXISTS test;
 EOF
 
-/usr/bin/mysqld --user=root --console --init_file=/tmp/sql
-
-rm /tmp/sql
+exec /usr/bin/mysqld --user=root --console --init_file=/tmp/sql

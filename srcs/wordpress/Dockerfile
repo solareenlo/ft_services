@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 21:42:24 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/15 23:24:29 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/17 03:16:00 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
 RUN set -eux; \
 		mkdir -p /run/nginx
 
-VOLUME ["/var/www/wp-content"]
+# VOLUME ["/var/www/wp-content"]
 # WORKDIR /var/www/wp-content
 # RUN chown -R nobody.nobody /var/www
 
@@ -82,11 +82,6 @@ RUN chown nobody.nobody /usr/src/wordpress/wp-config.php && \
 COPY srcs/wp-secret-keys.php /usr/src/wordpress
 RUN chown nobody.nobody /usr/src/wordpress/wp-secret-keys.php && \
 	chmod 640 /usr/src/wordpress/wp-secret-keys.php
-
-# Run ENTRYPOINT
-COPY srcs/entrypoint.sh /tmp/entrypoint.sh
-RUN chmod +x /tmp/entrypoint.sh
-ENTRYPOINT ["/tmp/entrypoint.sh"]
 
 EXPOSE 5050
 

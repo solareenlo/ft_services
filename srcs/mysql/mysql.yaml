@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/11 21:59:44 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/17 03:19:44 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/17 04:42:42 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 apiVersion: v1
@@ -89,4 +89,4 @@ metadata:
   name: mysql-pass
 type: Opaque
 stringData:
-  password: admin
+  password: password

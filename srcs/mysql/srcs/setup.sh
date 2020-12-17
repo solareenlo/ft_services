@@ -1,7 +1,6 @@
 #!bin/sh
 
-MYSQL_ROOT_PASSWORD=password
-
+# MYSQL_ROOT_PASSWORD=password
 
 mysql_install_db --user=root --ldata=/var/lib/mysql
 

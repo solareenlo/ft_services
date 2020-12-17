@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/17 03:15:16 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/17 13:52:04 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,10 @@ spec:
         app: wordpress
         tier: frontend
     spec:
+      initContainers:
+      - name: init-mysql
+        image: busybox:1.31
+        command: ['sh', '-c', "until nslookup wordpress-mysql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done"]
       containers:
       - image: ft_services/wordpress:latest
         imagePullPolicy: Never

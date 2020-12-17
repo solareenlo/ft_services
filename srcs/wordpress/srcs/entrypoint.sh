@@ -29,14 +29,21 @@ if [ ! "$(ls -A "/var/www/wp-content" > /dev/null 2>&1)" ]; then
     chown -R nobody:nobody /var/www
 fi
 
-# Wait until mysql is up
-# until sudo -u www wp db check --path="/www"; do echo waiting for mysql; sleep 2; done
+cat > /tmp/sql << EOF
+CREATE DATABASE IF NOT EXISTS $DATABASE_NAME;
+CREATE USER '$USERNAME'@'172-17-0-%.$DATABASE_NAME.default.svc.cluster.local' IDENTIFIED BY '$PASSWORD';
+GRANT ALL PRIVILEGES ON $DATABASE_NAME.* TO '$USERNAME'@'172-17-0-%.$DATABASE_NAME.default.svc.cluster.local' WITH GRANT OPTION;
+EOF
 
-# cat > /tmp/sql << EOF
-# CREATE DATABASE IF NOT EXISTS $DATABASE_NAME;
-# CREATE USER '$USERNAME'@'$WORDPRESS_DB_HOST' IDENTIFIED BY '$PASSWORD';
-# GRANT ALL PRIVILEGES ON $DATABASE_NAME.* TO '$USERNAME'@'$WORDPRESS_DB_HOST';
-# EOF
+# Wait until mysql is up
+# until sudo -u nobody wp db check --path="/usr/src/wordpress"; do
+# 	echo waiting for mysql;
+# 	sleep 2;
+# done
+until mysql --host=$WORDPRESS_DB_HOST --user=root --password=$MYSQL_ROOT_PASSWORD < /tmp/sql; do
+	echo waiting for mysql;
+	sleep 3;
+done
 
 # mysql --host=$WORDPRESS_DB_HOST --user=root --password=$MYSQL_ROOT_PASSWORD < /tmp/sql
 # rm /tmp/sql
@@ -45,5 +52,8 @@ fi
 # echo "$USERNAME:$PASSWORD" | chpasswd
 # chmod -R 755 /usr/src/
 # chown -R $USERNAME:$USERNAME /usr/src/wordpress
+
+/usr/sbin/php-fpm7
+nginx -g "daemon off;"
 
 exec "$@"

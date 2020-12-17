@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 21:42:24 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/17 03:16:00 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/17 10:35:23 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,14 +74,21 @@ RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh
     chmod +x /usr/local/bin/wp
 
 # Set up wp-config
-COPY srcs/wp-config.php /usr/src/wordpress
-RUN chown nobody.nobody /usr/src/wordpress/wp-config.php && \
-	chmod 640 /usr/src/wordpress/wp-config.php
+# COPY srcs/wp-config.php /usr/src/wordpress
+# RUN chown nobody.nobody /usr/src/wordpress/wp-config.php && \
+# 	chmod 640 /usr/src/wordpress/wp-config.php
 
 # Add wp-secret-keys
 COPY srcs/wp-secret-keys.php /usr/src/wordpress
 RUN chown nobody.nobody /usr/src/wordpress/wp-secret-keys.php && \
 	chmod 640 /usr/src/wordpress/wp-secret-keys.php
+
+COPY srcs/healthcheck.sh /tmp/healthcheck.sh
+RUN chmod +x /tmp/healthcheck.sh
+
+# COPY srcs/entrypoint.sh /tmp/entrypoint.sh
+# RUN chmod +x /tmp/entrypoint.sh
+# ENTRYPOINT /tmp/entrypoint.sh
 
 EXPOSE 5050
 

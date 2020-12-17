@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/11 21:59:44 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/17 04:42:42 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/17 14:38:13 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 apiVersion: v1
@@ -52,8 +52,6 @@ spec:
     matchLabels:
       app: wordpress
       tier: mysql
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:

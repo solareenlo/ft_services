@@ -62,7 +62,12 @@ kill `cat /var/run/sshd.pid'
 ```
 
 # References
+## コマンド
+- [|| でコマンドをつなげると、直前のコマンドが失敗した場合のみ次のコマンドが実行される。](https://shellscript.sunone.me/exit_status.html)
+
 ## sql
+- wordpress の初期起動時に wordpress から mysql へ接続するためには，Database Host の欄に `mysql 名:port number' を入力すべし．
+	- 例: `wordpress-mysql:3306`
 - [Bind Addressの意味がようやく分かった](https://keens.github.io/blog/2016/02/24/bind_addressnoimigayouyakuwakatta/)
 
 ## Dockerfile 関連

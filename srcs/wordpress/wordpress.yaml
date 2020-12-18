@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/18 15:56:40 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/18 22:25:51 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ metadata:
   labels:
     app: wordpress
   annotations:
-    metallb.universe.tf/address-pool: wpport
+    metallb.universe.tf/allow-shared-ip: "true"
 spec:
   type: LoadBalancer
   selector:

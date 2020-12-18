@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 10:50:05 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/12 15:51:06 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/18 22:34:47 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ kind: Service
 metadata:
   name: nginx-service
   annotations:
-    metallb.universe.tf/address-pool: default
+    metallb.universe.tf/allow-shared-ip: "true"
 spec:
   type: LoadBalancer
   selector:
@@ -65,6 +65,22 @@ spec:
           name: ssh
         env:
         - name: SSH_USER
-          value: admin
+          valueFrom:
+            secretKeyRef:
+              name: nginx-ssh-secret
+              key: user
         - name: SSH_PASSWORD
-          value: pass
+          valueFrom:
+            secretKeyRef:
+              name: nginx-ssh-secret
+              key: password
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nginx-ssh-secret
+stringData:
+  user: admin
+  password: password

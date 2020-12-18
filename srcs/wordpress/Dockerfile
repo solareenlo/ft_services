@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 21:42:24 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/17 23:33:21 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/18 23:05:23 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,43 +17,25 @@ LABEL Maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
 RUN set -eux; \
 	apk -U upgrade && \
 	apk add --no-cache \
-		php7 \
-		php7-fpm \
-		php7-curl \
-		php7-dom \
-		php7-exif \
-		php7-fileinfo \
-		php7-json \
-		php7-mbstring \
-		php7-mysqli \
-		php7-sodium \
-		php7-openssl \
-		php7-imagick \
-		php7-xml \
-		php7-zip \
-		php7-gd \
-		php7-iconv \
-		php7-mcrypt \
-		php7-simplexml \
-		php7-xmlreader \
-		php7-xmlwriter \
-		php7-zlib \
-		php7-phar \
-		php7-intl \
-		php7-ctype \
-		php7-opcache \
-		nginx \
-		mysql-client \
-		curl
+		php7 php7-fpm php7-curl php7-dom php7-exif php7-fileinfo php7-json \
+		php7-mbstring php7-mysqli php7-sodium php7-openssl php7-imagick \
+		php7-xml php7-zip php7-gd php7-iconv php7-mcrypt php7-simplexml \
+		php7-xmlreader php7-xmlwriter php7-zlib php7-phar php7-intl \
+		php7-ctype php7-opcache \
+		nginx mysql-client openssl curl
 
 # Set up nginx
 COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
 RUN set -eux; \
 		mkdir -p /run/nginx
 
-# VOLUME ["/var/www/wp-content"]
-# WORKDIR /var/www/wp-content
-# RUN chown -R nobody.nobody /var/www
+# Generate Self-Signed SSL certificate
+RUN set -eux; \
+		mkdir /etc/ssl/nginx; \
+		openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+			-keyout /etc/ssl/private/nginx_private.key \
+			-out /etc/ssl/certs/nginx_public.crt \
+			-subj "/C=JP/ST=Tokyo/L=Minato-ku/O=42Tokyo/OU=ft_services/CN=localhost"
 
 # Install wordpress
 ENV WORDPRESS_VERSION 5.6
@@ -82,10 +64,6 @@ RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh
 COPY srcs/wp-secret-keys.php /usr/src/wordpress
 RUN chown nobody.nobody /usr/src/wordpress/wp-secret-keys.php && \
 	chmod 640 /usr/src/wordpress/wp-secret-keys.php
-
-# COPY srcs/entrypoint.sh /tmp/entrypoint.sh
-# RUN chmod +x /tmp/entrypoint.sh
-# ENTRYPOINT /tmp/entrypoint.sh
 
 EXPOSE 5050
 

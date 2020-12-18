@@ -9,12 +9,4 @@ data:
     - name: default
       protocol: layer2
       addresses:
-      - 192.168.99.10-192.168.99.15
-    - name: wpport
-      protocol: layer2
-      addresses:
-      - 192.168.99.16-192.168.99.16
-    - name: pmaport
-      protocol: layer2
-      addresses:
-      - 192.168.99.17-192.168.99.17
+      - 192.168.99.10-192.168.99.14

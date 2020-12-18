@@ -129,6 +129,8 @@ kill `cat /var/run/sshd.pid'
 - [Alpine Linux で ユーザー/グループ を 追加/削除/一覧 する 方法](https://garafu.blogspot.com/2019/07/operate-user-group-on-alpine.html#adduser)
 
 ## Nginx
+- [Module ngx_http_proxy_module](http://nginx.org/en/docs/http/ngx_http_proxy_module.html)
+- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 - [nginx を docker で動かすときの Tips 3選 (foreground で起動する)](https://heartbeats.jp/hbblog/2014/07/3-tips-for-nginx-on-docker.html)
 - [can't run nginx in alpine linux (docker)](https://superuser.com/questions/1306656/cant-run-nginx-in-alpine-linux-docker)
 - [Alpine Nginx with PHP](https://wiki.alpinelinux.org/wiki/Nginx_with_PHP)

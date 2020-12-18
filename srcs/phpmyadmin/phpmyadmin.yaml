@@ -1,0 +1,57 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    phpmyadmin.yaml                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/12/18 15:48:18 by tayamamo          #+#    #+#              #
+#    Updated: 2020/12/18 16:34:34 by tayamamo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-phpmyadmin
+  labels:
+    app: wordpress
+  annotations:
+    metallb.universe.tf/address-pool: pmaport
+spec:
+  type: LoadBalancer
+  selector:
+    app: wordpress
+    tier: phpmyadmin
+  ports:
+    - name: phpmyadmin
+      port: 5000
+      targetPort: 5000
+      protocol: TCP
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-phpmyadmin
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: phpmyadmin
+    spec:
+      containers:
+      - image: ft_services/phpmyadmin:latest
+        imagePullPolicy: Never
+        name: phpmyadmin
+        ports:
+        - containerPort: 5000
+          name: phpmyadmin

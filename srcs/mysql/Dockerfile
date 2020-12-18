@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/11 21:38:53 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/17 00:33:32 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/18 19:32:40 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ EXPOSE 3306
 
 COPY srcs/setup.sh /tmp/
 COPY srcs/my.cnf /etc/
+COPY srcs/create_tables.sql /tmp/
 
 RUN chmod +x /tmp/setup.sh
 

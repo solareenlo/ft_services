@@ -71,9 +71,16 @@ kill `cat /var/run/sshd.pid'
 - [Bind Addressの意味がようやく分かった](https://keens.github.io/blog/2016/02/24/bind_addressnoimigayouyakuwakatta/)
 
 ## Dockerfile 関連
+### phpmyadmin
+- [mhzawadi/phpmyadmin](https://github.com/mhzawadi/phpmyadmin)
+- [phpmyadmin/docker/fpm-alpine/](https://github.com/phpmyadmin/docker/tree/master/fpm-alpine)
+
 ### php/wordpress
 - [Editing wp-config.php/wordpress](https://wordpress.org/support/article/editing-wp-config-php/)
 - [php extentions/wordpress](https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
+
+### php
+- [php/7.4/alpine3.12/fpm/Dockerfile](https://github.com/docker-library/php/blob/master/7.4/alpine3.12/fpm/Dockerfile)
 
 ### supervisor
 - [Dockerでsupervisorを使う時によくハマる点まとめ](https://techracho.bpsinc.jp/morimorihoge/2017_06_05/40936)
@@ -97,6 +104,9 @@ kill `cat /var/run/sshd.pid'
 - [Kubernetesの apiVersion に何を書けばいいか](https://qiita.com/soymsk/items/69aeaa7945fe1f875822)
 
 ## Container
+## phpmyadmin
+- [Welcome to phpMyAdmin’s documentation!](https://docs.phpmyadmin.net/en/latest/)
+
 ### Telegraf
 - Telegrafとは，2015/06/19 に発表された InfluxDB 専用の Go 言語で書かれたメトリクスコレクタ(エージェント)で，fluentd などの中間層をはさまず，InfluxDB に最適化されたデータ格納をしてくれるエージェントのこと．
 - [influxdata/telegraf](https://github.com/influxdata/telegraf)

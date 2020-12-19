@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/06 20:09:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/17 03:03:06 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/19 14:56:16 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,19 +32,14 @@ COPY srcs/favicon.ico /var/www/favicon.ico
 
 # Generate Self-Signed SSL certificate
 RUN set -eux; \
-		mkdir /etc/ssl/nginx; \
 		openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 			-keyout /etc/ssl/private/nginx_private.key \
 			-out /etc/ssl/certs/nginx_public.crt \
 			-subj "/C=JP/ST=Tokyo/L=Minato-ku/O=42Tokyo/OU=ft_services/CN=localhost"
 
-# Generate SSH Host Key & create SSH user
-ENV SSH_USER admin
-ENV SSH_PASSWORD password
+# Generate SSH Host Key
 RUN set -eux; \
-		/usr/bin/ssh-keygen -A && \
-		adduser -D "$SSH_USER" && \
-		echo "$SSH_USER:$SSH_PASSWORD" | chpasswd
+		/usr/bin/ssh-keygen -A
 
 # Set up sshd_config
 COPY srcs/sshd_config /etc/ssh/
@@ -92,4 +87,3 @@ EXPOSE 80 443 22
 COPY srcs/setup.sh /tmp/
 RUN chmod +x /tmp/setup.sh
 CMD /tmp/setup.sh
-

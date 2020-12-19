@@ -62,6 +62,12 @@ kill `cat /var/run/sshd.pid'
 ```
 
 # References
+## ftps
+- [debian/unstable/manpages-ja/vsftpd.conf(5)](https://manpages.debian.org/unstable/manpages-ja/vsftpd.conf.5.ja.html)
+- [man page of VSFTPD.CONF](https://linuxjm.osdn.jp/html/vsftpd/man5/vsftpd.conf.5.html)
+- [lavv17/lftp](https://github.com/lavv17/lftp)
+	- ftps をコマンドで使うツール．
+
 ## コマンド
 - [|| でコマンドをつなげると、直前のコマンドが失敗した場合のみ次のコマンドが実行される。](https://shellscript.sunone.me/exit_status.html)
 
@@ -71,6 +77,9 @@ kill `cat /var/run/sshd.pid'
 - [Bind Addressの意味がようやく分かった](https://keens.github.io/blog/2016/02/24/bind_addressnoimigayouyakuwakatta/)
 
 ## Dockerfile 関連
+## ftps
+- [delfer/docker-alpine-ftp-server](https://github.com/delfer/docker-alpine-ftp-server)
+
 ### phpmyadmin
 - [mhzawadi/phpmyadmin](https://github.com/mhzawadi/phpmyadmin)
 - [phpmyadmin/docker/fpm-alpine/](https://github.com/phpmyadmin/docker/tree/master/fpm-alpine)
@@ -104,6 +113,10 @@ kill `cat /var/run/sshd.pid'
 - [Kubernetesの apiVersion に何を書けばいいか](https://qiita.com/soymsk/items/69aeaa7945fe1f875822)
 
 ## Container
+## ftps
+- [FTPにおけるアクティブモードとパッシブモードの違い](http://cos.linux-dvr.biz/archives/131)
+- [FTPS、SFTPの違いって?](https://qiita.com/kasei-san/items/bf766e6c2ececa4c3905)
+
 ## phpmyadmin
 - [Welcome to phpMyAdmin’s documentation!](https://docs.phpmyadmin.net/en/latest/)
 

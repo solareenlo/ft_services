@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 14:52:26 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/19 02:21:00 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/19 11:06:35 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ RUN set -eux; \
 
 # Generate Self-Signed SSL certificate
 RUN set -eux; \
-		mkdir /etc/ssl/nginx; \
 		openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 			-keyout /etc/ssl/private/nginx_private.key \
 			-out /etc/ssl/certs/nginx_public.crt \

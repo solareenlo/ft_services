@@ -3,12 +3,12 @@
 # Start telegraf
 # telegraf &
 
-# Create new user without creating a home directory
-# adduser -D "$SSH_USER"
-# Update password for the new user
-# echo "$SSH_USER:$SSH_PASSWORD" | chpasswd
-
 /usr/sbin/php-fpm7
+
+# Create ssh user without creating a home directory
+adduser -D "$SSH_USER"
+# Update password for the ssh user
+echo "$SSH_USER:$SSH_PASSWORD" | chpasswd
 
 # sshd is the daemon program for ssh connection
 /usr/sbin/sshd

@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 19:32:07 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/18 16:18:37 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/19 17:49:36 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ resources:
   - mysql/mysql.yaml
   - nginx/nginx.yaml
   - phpmyadmin/phpmyadmin.yaml
+  - ftps/ftps.yaml
 
 # secretGenerator:
 # - name: mysql-pass

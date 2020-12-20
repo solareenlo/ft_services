@@ -7,9 +7,9 @@
 # MAX_PORT=21005
 ADDR_OPT="-opasv_address=$ADDRESS"
 
-mkdir -p /var/ftp
+mkdir -p /var/ftps
 # Create ftps user without creating a home directory
-adduser -D -h /var/ftp "$USERNAME"
+adduser -D --home /var/ftps "$USERNAME"
 # Update password for the ftps user
 echo "$USERNAME:$PASSWORD" | chpasswd
 echo "$USERNAME" > /etc/vsftpd.chroot_list

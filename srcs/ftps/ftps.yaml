@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 15:05:18 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/20 13:06:13 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/20 18:16:04 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,6 +105,13 @@ spec:
             secretKeyRef:
               name: ftps-secret
               key: password
+        volumeMounts:
+        - name: wp-persistent-storage
+          mountPath: /var/ftps
+      volumes:
+      - name: wp-persistent-storage
+        persistentVolumeClaim:
+          claimName: wp-pv-claim
 
 ---
 

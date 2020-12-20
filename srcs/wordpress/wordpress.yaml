@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/18 22:25:51 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/20 18:02:04 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,10 +95,10 @@ spec:
         - containerPort: 5050
           name: wordpress
         volumeMounts:
-        - name: wordpress-persistent-storage
+        - name: wp-persistent-storage
           mountPath: /var/www/wp-config
       volumes:
-      - name: wordpress-persistent-storage
+      - name: wp-persistent-storage
         persistentVolumeClaim:
           claimName: wp-pv-claim
 

@@ -5,6 +5,14 @@
 ## Usage
 
 ## Commands
+## ftps, lftp
+```sh
+lftp -e 'set ssl:verify-certificate false' -u $USER_HERE,$PASSWORD_HERE -p 21 $IP_HERE
+lftp -e 'set ssl:verify-certificate false' -u username,password -p 21 192.168.99.10
+curl -k --ftp-ssl --user $USER_HERE:$PASSWORD_HERE ftp://$IP_HERE/
+curl -k --ftp-ssl --user username:password ftp://192.168.99.10:21
+```
+
 ## shell
 ```sh
 export -p

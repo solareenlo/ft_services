@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 15:05:18 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/19 19:28:30 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/20 13:06:13 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,8 @@ spec:
         - containerPort: 21005
         imagePullPolicy: Never
         env:
+        - name: ADDRESS
+          value: 192.168.99.10
         - name: USERNAME
           valueFrom:
             secretKeyRef:

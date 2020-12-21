@@ -71,12 +71,14 @@ kill `cat /var/run/sshd.pid'
 
 # References
 ## ftps
+- [パッシブモードのFTPS通信のFWの設定](https://www.replystudio.net/2014/10/ftpsfw.html)
 - [debian/unstable/manpages-ja/vsftpd.conf(5)](https://manpages.debian.org/unstable/manpages-ja/vsftpd.conf.5.ja.html)
 - [man page of VSFTPD.CONF](https://linuxjm.osdn.jp/html/vsftpd/man5/vsftpd.conf.5.html)
 - [lavv17/lftp](https://github.com/lavv17/lftp)
 	- ftps をコマンドで使うツール．
 
 ## コマンド
+- [tar の --strip-components と -C オプションを使ってスマートに展開する](https://kakakakakku.hatenablog.com/entry/2018/06/13/220940)
 - [|| でコマンドをつなげると、直前のコマンドが失敗した場合のみ次のコマンドが実行される。](https://shellscript.sunone.me/exit_status.html)
 
 ## sql
@@ -105,6 +107,11 @@ kill `cat /var/run/sshd.pid'
 - [Supervisor: A Process Control System](http://supervisord.org/index.html)
 
 ## k8s yaml 関連
+### influxdata
+- [influxdata/docs-v2/static/downloads/influxdb-k8-minikube.yaml](https://github.com/influxdata/docs-v2/blob/master/static/downloads/influxdb-k8-minikube.yaml)
+
+### general
+- [コンテナでプログラムをrootとして実行することがなぜ問題なのか KubernetsのCVE-2019-11245を例に考える](https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/)
 - [いい加減覚えよう。 `command > /dev/null 2>&1`の意味](https://qiita.com/ritukiii/items/b3d91e97b71ecd41d4ea)
 - [Secrets/kubernetes/docs](https://kubernetes.io/ja/docs/concepts/configuration/secret/)
 - [【Kubernetes】Secretとは（概要から生成・編集・利用方法まで）](https://ameblo.jp/bakery-diary/entry-12615574380.html)
@@ -121,23 +128,32 @@ kill `cat /var/run/sshd.pid'
 - [Kubernetesの apiVersion に何を書けばいいか](https://qiita.com/soymsk/items/69aeaa7945fe1f875822)
 
 ## Container
-## InfluxDB
-- [influxdata | Documentation](https://docs.influxdata.com)
 
-## ftps
-- [FTPにおけるアクティブモードとパッシブモードの違い](http://cos.linux-dvr.biz/archives/131)
-- [FTPS、SFTPの違いって?](https://qiita.com/kasei-san/items/bf766e6c2ececa4c3905)
-
-## phpmyadmin
-- [Welcome to phpMyAdmin’s documentation!](https://docs.phpmyadmin.net/en/latest/)
+## Grafana
+- Grafana とは，オープンソースの時系列データを格好良く表示してくれる web アプリケーションのこと．
+- [Using InfluxDB in Grafana](https://grafana.com/docs/grafana/latest/datasources/influxdb/)
 
 ### Telegraf
-- Telegrafとは，2015/06/19 に発表された InfluxDB 専用の Go 言語で書かれたメトリクスコレクタ(エージェント)で，fluentd などの中間層をはさまず，InfluxDB に最適化されたデータ格納をしてくれるエージェントのこと．
+- Telegraf とは，オープンソースな 2015/06/19 に発表された InfluxDB 専用の Go 言語で書かれたメトリクスコレクタ(エージェント)で，fluentd などの中間層をはさまず，InfluxDB に最適化されたデータ格納をしてくれるエージェントのこと．
 - [influxdata/telegraf](https://github.com/influxdata/telegraf)
 - https://www.influxdata.com/time-series-platform/telegraf/
 - [influxdata/influxdata-docker/telegraf/1.16/alpine/Dockerfile](https://github.com/influxdata/influxdata-docker/blob/da900619b14ddbf221e639b5108a7219af8b0bbc/telegraf/1.16/alpine/Dockerfile)
 
-### Wordpress
+## InfluxDB
+- InfluxDB とは，オープンソースな時系列データの扱いに優れた DB のこと．
+- [influxdata | Documentation](https://docs.influxdata.com)
+
+## ftps
+- FTPS とは，FTP で送受信するデータを TLS または SSL で暗号化する通信プロトコルのこと．
+- [FTPにおけるアクティブモードとパッシブモードの違い](http://cos.linux-dvr.biz/archives/131)
+- [FTPS、SFTPの違いって?](https://qiita.com/kasei-san/items/bf766e6c2ececa4c3905)
+
+## phpmyadmin
+- phpMyAdmin とは，オープンソースな MySQL サーバをウェブブラウザで管理するためのデータベース接続クライアントツールのこと．
+- [Welcome to phpMyAdmin’s documentation!](https://docs.phpmyadmin.net/en/latest/)
+
+### WordPress
+- WordPress とは，オープンソースのブログを作るソフトウェアのこと．
 - [combro2k/dockerfiles/alpine-nginx-wordpress-php7](https://github.com/combro2k/dockerfiles/tree/master/alpine-nginx-wordpress-php7)
 - [etopian/alpine-php-wordpress](https://github.com/etopian/alpine-php-wordpress)
 - [TrafeX/docker-wordpress](https://github.com/TrafeX/docker-wordpress)
@@ -151,6 +167,11 @@ kill `cat /var/run/sshd.pid'
 - [Alpine Wordpress Php/wiki.alpine](https://wiki.alpinelinux.org/wiki/WordPress#Install_lighttpd.2C_PHP.2C_and_MySql)
 - [adduser/wiki.alpine](https://wiki.alpinelinux.org/wiki/Setting_up_a_new_user#adduser)
 - [Alpine Linux で ユーザー/グループ を 追加/削除/一覧 する 方法](https://garafu.blogspot.com/2019/07/operate-user-group-on-alpine.html#adduser)
+
+### Alpine で glibc を使う
+- [Comparison of C/POSIX standard library implementations for Linux](http://www.etalabs.net/compare_libcs.html)
+- [Docker-Hub-frolvlad/docker-alpine-glibc/Dockerfile](https://github.com/Docker-Hub-frolvlad/docker-alpine-glibc/blob/master/Dockerfile)
+- [sgerrand/alpine-pkg-glibc](https://github.com/sgerrand/alpine-pkg-glibc)
 
 ## Nginx
 - [Module ngx_http_proxy_module](http://nginx.org/en/docs/http/ngx_http_proxy_module.html)

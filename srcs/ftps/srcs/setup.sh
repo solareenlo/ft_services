@@ -5,7 +5,7 @@
 # ADDRESS=192.168.99.10
 # MIN_PORT=21000
 # MAX_PORT=21005
-ADDR_OPT="-opasv_address=$ADDRESS"
+# ADDR_OPT="-opasv_address=$ADDRESS"
 
 mkdir -p /var/ftps
 # Create ftps user without creating a home directory
@@ -19,4 +19,3 @@ echo "$USERNAME" > /etc/vsftpd.chroot_list
 	-opasv_max_port=$MAX_PORT \
 	-opasv_address=$ADDRESS \
 	/etc/vsftpd/vsftpd.conf
-# /usr/sbin/vsftpd -opasv_min_port=$MIN_PORT -opasv_max_port=$MAX_PORT /etc/vsftpd/vsftpd.conf

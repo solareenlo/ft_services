@@ -6,15 +6,13 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 20:39:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/22 01:26:25 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/22 17:22:30 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.12
 
 LABEL Maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
-
-COPY srcs/glibc-2.32-r0.apk /tmp/
 
 RUN set -eux; \
 	apk -U upgrade; \
@@ -29,14 +27,14 @@ RUN set -eux; \
 			-subj "/C=JP/ST=Tokyo/L=Minato-ku/O=42Tokyo/OU=ft_services/CN=localhost"
 
 # Install libc
+COPY srcs/glibc-2.32-r0.apk /tmp/
+
 RUN set -eux; \
 	apk -U upgrade && \
-	wget -q -O /etc/apk/keys/sgerrand.rsa.pub \
-		https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
+	wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
 	# wget -O /tmp/glibc-2.32-r0.apk \
 	# 	https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk && \
-	apk add --no-cache \
-		/tmp/glibc-2.32-r0.apk && \
+	apk add --no-cache /tmp/glibc-2.32-r0.apk && \
 	rm /tmp/*
 
 # Install grafana
@@ -55,8 +53,11 @@ RUN set -eux; \
 	rm /tmp/*
 
 # Set configuration
+RUN mkdir /etc/grafana
 COPY srcs/custom.ini /usr/share/grafana/conf
 
 EXPOSE 3000
-WORKDIR	/usr/share/grafana
-CMD bin/grafana-server --config conf/custom.ini
+
+COPY srcs/setup.sh /tmp/
+RUN chmod +x /tmp/setup.sh
+CMD /tmp/setup.sh

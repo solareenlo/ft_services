@@ -1,0 +1,2 @@
+tls-cert: /etc/ssl/certs/influxdb_public.crt
+tls-key: /etc/ssl/private/influxdb_private.key

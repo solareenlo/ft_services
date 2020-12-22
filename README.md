@@ -141,6 +141,8 @@ kill `cat /var/run/sshd.pid'
 
 ## InfluxDB
 - InfluxDB とは，オープンソースな時系列データの扱いに優れた DB のこと．
+- [Enable TLS encryption](https://docs.influxdata.com/influxdb/v2.0/security/enable-tls/)
+- [InfluxDB configuration options](https://docs.influxdata.com/influxdb/v2.0/reference/config-options/)
 - [influxdata | Documentation](https://docs.influxdata.com)
 
 ## ftps

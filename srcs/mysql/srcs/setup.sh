@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 # MYSQL_ROOT_PASSWORD=password
 

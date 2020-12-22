@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/22 01:26:55 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/22 17:29:33 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ PODS+=(wordpress)
 PODS+=(phpmyadmin)
 PODS+=(ftps)
 PODS+=(grafana)
+PODS+=(influxdb)
 
 function docker_build()
 {

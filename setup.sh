@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/22 17:29:33 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/24 01:14:27 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ PODS+=(phpmyadmin)
 PODS+=(ftps)
 PODS+=(grafana)
 PODS+=(influxdb)
+PODS+=(telegraf)
 
 function docker_build()
 {
@@ -88,5 +89,5 @@ for pod in "${PODS[@]}"; do
 done
 
 # open dashboard
-# echo "📊  Activating Minikube Dashboard"
-# minikube dashboard
+echo "📊  Activating Minikube Dashboard"
+minikube dashboard

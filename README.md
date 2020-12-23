@@ -135,12 +135,14 @@ kill `cat /var/run/sshd.pid'
 
 ### Telegraf
 - Telegraf とは，オープンソースな 2015/06/19 に発表された InfluxDB 専用の Go 言語で書かれたメトリクスコレクタ(エージェント)で，fluentd などの中間層をはさまず，InfluxDB に最適化されたデータ格納をしてくれるエージェントのこと．
+- [telegraf/plugins/inputs/docker/README.md](https://github.com/influxdata/telegraf/blob/release-1.17/plugins/inputs/docker/README.md)
 - [influxdata/telegraf](https://github.com/influxdata/telegraf)
 - https://www.influxdata.com/time-series-platform/telegraf/
 - [influxdata/influxdata-docker/telegraf/1.16/alpine/Dockerfile](https://github.com/influxdata/influxdata-docker/blob/da900619b14ddbf221e639b5108a7219af8b0bbc/telegraf/1.16/alpine/Dockerfile)
 
 ## InfluxDB
 - InfluxDB とは，オープンソースな時系列データの扱いに優れた DB のこと．
+- [InfluxDB v2.x Output Plugin](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/influxdb_v2)
 - [Enable TLS encryption](https://docs.influxdata.com/influxdb/v2.0/security/enable-tls/)
 - [InfluxDB configuration options](https://docs.influxdata.com/influxdb/v2.0/reference/config-options/)
 - [influxdata | Documentation](https://docs.influxdata.com)

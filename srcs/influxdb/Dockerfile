@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 04:18:17 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/22 17:26:42 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/24 00:27:47 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,39 +26,60 @@ RUN set -eux; \
 			-out /etc/ssl/certs/influxdb_public.crt \
 			-subj "/C=JP/ST=Tokyo/L=Minato-ku/O=42Tokyo/OU=ft_services/CN=localhost"
 
-# Set configuration
-RUN mkdir /etc/influxdb
+# Set influxdb configuration
+RUN mkdir /etc/influxdb; \
+	chmod 644 /etc/ssl/certs/influxdb_public.crt; \
+	chmod 600 /etc/ssl/private/influxdb_private.key
 ENV INFLUXD_CONFIG_PATH /etc/influxdb
-COPY srcs/config.yaml /etc/influxdb/
+# COPY srcs/config.yaml /etc/influxdb/
 
 # Install influxdb
-ENV INFLUXDB_VERSION 2.0.3
+# ENV INFLUXDB_VERSION 2.0.3
+# COPY srcs/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz /tmp/
+# RUN set -eux && \
+# 	mkdir ~/.gnupg; \
+# 	echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf; \
+# 	apk add --no-cache --virtual .build-deps wget gnupg tar curl && \
+# 	curl -s https://repos.influxdata.com/influxdb2.key | gpg --import - && \
+# 	wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz.asc -P /tmp/ && \
+# 	# wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz -P /tmp/ && \
+# 	gpg --batch --verify /tmp/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz.asc /tmp/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz && \
+# 	mkdir -p /usr/src && \
+# 	tar -C /usr/src -xzf /tmp/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz && \
+# 	rm -f /usr/src/influxdb2-*/influxdb.conf && \
+# 	chmod +x /usr/src/influxdb2-*/* && \
+# 	cp -a /usr/src/influxdb2-*/* /usr/bin/ && \
+# 	gpgconf --kill all && \
+# 	rm -rf /tmp/*.tar.gz* /usr/src /root/.gnupg && \
+# 	apk del .build-deps
+ENV INFLUXDB_VERSION 1.8.3
+RUN set -ex && \
+    mkdir ~/.gnupg; \
+    echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf; \
+    apk add --no-cache --virtual .build-deps wget gnupg tar && \
+    for key in \
+        05CE15085FC09D18E99EFB22684A14CF2582E0C5 ; \
+    do \
+        gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key" || \
+        gpg --keyserver pgp.mit.edu --recv-keys "$key" || \
+        gpg --keyserver keyserver.pgp.com --recv-keys "$key" ; \
+    done && \
+    wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb-${INFLUXDB_VERSION}-static_linux_amd64.tar.gz.asc && \
+    wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb-${INFLUXDB_VERSION}-static_linux_amd64.tar.gz && \
+    gpg --batch --verify influxdb-${INFLUXDB_VERSION}-static_linux_amd64.tar.gz.asc influxdb-${INFLUXDB_VERSION}-static_linux_amd64.tar.gz && \
+    mkdir -p /usr/src && \
+    tar -C /usr/src -xzf influxdb-${INFLUXDB_VERSION}-static_linux_amd64.tar.gz && \
+    rm -f /usr/src/influxdb-*/influxdb.conf && \
+    chmod +x /usr/src/influxdb-*/* && \
+    cp -a /usr/src/influxdb-*/* /usr/bin/ && \
+    gpgconf --kill all && \
+    rm -rf *.tar.gz* /usr/src /root/.gnupg && \
+    apk del .build-deps
 
-COPY srcs/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz /tmp/
-
-RUN set -eux && \
-	mkdir ~/.gnupg; \
-	echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf; \
-	apk add --no-cache --virtual .build-deps wget gnupg tar curl && \
-	curl -s https://repos.influxdata.com/influxdb2.key | gpg --import - && \
-	wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz.asc -P /tmp/ && \
-	# wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz -P /tmp/ && \
-	gpg --batch --verify /tmp/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz.asc /tmp/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz && \
-	mkdir -p /usr/src && \
-	tar -C /usr/src -xzf /tmp/influxdb2-${INFLUXDB_VERSION}_linux_amd64.tar.gz && \
-	rm -f /usr/src/influxdb2-*/influxdb.conf && \
-	chmod +x /usr/src/influxdb2-*/* && \
-	cp -a /usr/src/influxdb2-*/* /usr/bin/ && \
-	gpgconf --kill all && \
-	rm -rf /tmp/*.tar.gz* /usr/src /root/.gnupg && \
-	apk del .build-deps
+COPY srcs/influxdb.conf /etc/influxdb/influxdb.conf
 
 EXPOSE 8086
 
-VOLUME /var/lib/influxdb
-
 COPY srcs/setup.sh /tmp/
 RUN chmod +x /tmp/setup.sh
-# COPY init-influxdb.sh /init-influxdb.sh
-# ENTRYPOINT ["/entrypoint.sh"]
 CMD /tmp/setup.sh

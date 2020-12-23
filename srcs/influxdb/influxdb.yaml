@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 12:34:42 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/22 17:38:42 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/24 01:30:23 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ metadata:
   name: influxdb-service
   labels:
     app: influxdb
-  annotations:
-    metallb.universe.tf/allow-shared-ip: "true"
+  # annotations:
+  #   metallb.universe.tf/allow-shared-ip: "true"
 spec:
-  # type: ClusterIP
-  type: LoadBalancer
+  type: ClusterIP
+  # type: LoadBalancer
   selector:
     app: influxdb
     tier: influxdb
@@ -28,21 +28,6 @@ spec:
     - port: 8086
       targetPort: 8086
       protocol: TCP
-
----
-
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: influxdb-pvc
-  labels:
-    app: influxdb
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
 
 ---
 
@@ -73,7 +58,23 @@ spec:
         volumeMounts:
         - name: influxdb-persistent-storage
           mountPath: /var/lib/influxdb
+          # mountPath: /root/.influxdbv2
       volumes:
       - name: influxdb-persistent-storage
         persistentVolumeClaim:
           claimName: influxdb-pvc
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb-pvc
+  labels:
+    app: influxdb
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

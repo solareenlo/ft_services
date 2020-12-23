@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 20:39:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/22 17:22:30 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/23 22:37:57 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ RUN set -eux; \
 	tar -zxvf /tmp/${GRAFANA_FILE_NAME} --strip-components=1 -C /usr/share/grafana && \
 	rm /tmp/*
 
-# Set configuration
+# Set grafana configuration
 RUN mkdir /etc/grafana
 COPY srcs/custom.ini /usr/share/grafana/conf
 

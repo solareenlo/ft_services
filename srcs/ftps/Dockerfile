@@ -6,13 +6,14 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 11:02:38 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/19 20:03:04 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 05:12:45 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.12
 
 LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
+LABEL docker.group="ftps-service"
 
 RUN set -eux; \
 	apk -U upgrade; \

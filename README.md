@@ -131,6 +131,10 @@ kill `cat /var/run/sshd.pid'
 
 ## Grafana
 - Grafana とは，オープンソースの時系列データを格好良く表示してくれる web アプリケーションのこと．
+- [All dashboards >> Docker Dashboard](https://grafana.com/grafana/dashboards/10585)
+- [All dashboards >> Telegraf: system dashboard](https://grafana.com/grafana/dashboards/928)
+- [Provision dashboards and data sources](https://grafana.com/tutorials/provision-dashboards-and-data-sources/#1)
+- [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/)
 - [Using InfluxDB in Grafana](https://grafana.com/docs/grafana/latest/datasources/influxdb/)
 
 ### Telegraf

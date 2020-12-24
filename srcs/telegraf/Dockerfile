@@ -6,11 +6,14 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/23 22:39:35 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/23 22:39:36 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 04:39:01 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.12
+
+LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
+LABEL docker.group="telegraf-deployment"
 
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
 RUN apk add --no-cache iputils ca-certificates net-snmp-tools procps lm_sensors tzdata && \

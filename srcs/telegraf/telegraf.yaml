@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/23 22:09:34 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/23 22:09:49 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 03:26:59 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,3 +29,8 @@ spec:
       - image: ft_services/telegraf
         imagePullPolicy: Never
         name: telegraf
+        env:
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP

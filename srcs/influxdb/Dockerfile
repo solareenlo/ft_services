@@ -6,13 +6,14 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 04:18:17 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/24 00:27:47 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 05:12:19 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.12
 
 LABEL Maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
+LABEL docker.group="influxdb-service"
 
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
 RUN apk -U upgrade; \

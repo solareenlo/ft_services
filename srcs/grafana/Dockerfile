@@ -6,13 +6,14 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 20:39:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/23 22:37:57 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 05:25:41 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.12
 
 LABEL Maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
+LABEL docker.group="grafana-service"
 
 RUN set -eux; \
 	apk -U upgrade; \
@@ -53,8 +54,13 @@ RUN set -eux; \
 	rm /tmp/*
 
 # Set grafana configuration
+ENV DS_INFLUXDB_TELEGRAF="InfluxDB telegraf"
 RUN mkdir /etc/grafana
 COPY srcs/custom.ini /usr/share/grafana/conf
+COPY srcs/telegraf-system-dashboard_rev4.json /var/lib/grafana/dashboards/home.json
+RUN ln -sf /var/lib/grafana/dashboards/home.json /usr/share/grafana/public/dashboards/home.json
+COPY srcs/datasources.yaml /usr/share/grafana/conf/provisioning/datasources/
+COPY srcs/dashboards.yaml /usr/share/grafana/conf/provisioning/dashboards/
 
 EXPOSE 3000
 

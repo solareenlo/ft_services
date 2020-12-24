@@ -6,13 +6,14 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 14:52:26 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/19 11:06:35 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 04:37:18 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.12
 
 LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
+LABEL docker.group="wordpress-phpmyadmin"
 
 RUN set -eux; \
 		apk -U upgrade; \

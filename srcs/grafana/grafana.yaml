@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 23:55:03 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 14:11:17 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 16:55:13 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,8 +68,18 @@ spec:
         - name: INFLUXDB_DB_NAME
           valueFrom:
             secretKeyRef:
-              name: influxdb-db-name
-              key: database
+              name: influxdb-secret
+              key: db-name
+        - name: INFLUXDB_GRAFANA_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: grafana-username
+        - name: INFLUXDB_GRAFANA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: grafana-password
 
 ---
 

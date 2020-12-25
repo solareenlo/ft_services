@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 12:34:42 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 14:10:31 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 16:52:10 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,18 +56,38 @@ spec:
         - name: INFLUXDB_ADMIN_USERNAME
           valueFrom:
             secretKeyRef:
-              name: influxdb-admin-secret
-              key: username
+              name: influxdb-secret
+              key: admin-username
         - name: INFLUXDB_ADMIN_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: influxdb-admin-secret
-              key: password
+              name: influxdb-secret
+              key: admin-password
         - name: INFLUXDB_DB_NAME
           valueFrom:
             secretKeyRef:
-              name: influxdb-db-name
-              key: database
+              name: influxdb-secret
+              key: db-name
+        - name: INFLUXDB_TELEGRAF_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: telegraf-username
+        - name: INFLUXDB_TELEGRAF_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: telegraf-password
+        - name: INFLUXDB_GRAFANA_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: grafana-username
+        - name: INFLUXDB_GRAFANA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: grafana-password
         ports:
         - containerPort: 8086
           name: influxdb
@@ -100,16 +120,12 @@ spec:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: influxdb-admin-secret
+  name: influxdb-secret
 stringData:
-  username: admin
-  password: password
-
----
-
-apiVersion: v1
-kind: Secret
-metadata:
-  name: influxdb-db-name
-stringData:
-  database: telegraf_metrics
+  admin-username: admin
+  admin-password: password
+  db-name: telegraf_metrics
+  telegraf-username: telegraf
+  telegraf-password: passwrod
+  grafana-username: grafana
+  grafana-password: password

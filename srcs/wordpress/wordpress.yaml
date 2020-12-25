@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 13:45:26 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 17:02:29 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,21 @@ spec:
             secretKeyRef:
               name: wordpress-secret
               key: password
+        - name: INFLUXDB_DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: db-name
+        - name: INFLUXDB_TELEGRAF_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: telegraf-username
+        - name: INFLUXDB_TELEGRAF_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: telegraf-password
         ports:
         - containerPort: 5050
           name: wordpress

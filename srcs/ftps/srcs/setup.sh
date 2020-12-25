@@ -9,7 +9,8 @@
 
 mkdir -p /var/ftps
 # Create ftps user without creating a home directory
-adduser -D --home /var/ftps "$USERNAME"
+adduser -D --home /var/ftps/"$USERNAME" "$USERNAME"
+chmod a+w /var/ftps/"$USERNAME"
 # Update password for the ftps user
 echo "$USERNAME:$PASSWORD" | chpasswd
 echo "$USERNAME" > /etc/vsftpd.chroot_list

@@ -4,7 +4,7 @@ datasources:
   - name: ${DS_INFLUXDB_TELEGRAF}
     type: influxdb
     access: proxy
-    database: telegraf_metrics
+    database: ${INFLUXDB_DB_NAME}
     url: https://influxdb-service:8086
     jsonData:
       httpMode: GET

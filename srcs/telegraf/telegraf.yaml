@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/23 22:09:34 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 03:26:59 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 14:10:44 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ spec:
         imagePullPolicy: Never
         name: telegraf
         env:
-        - name: HOST_IP
+        - name: INFLUXDB_DB_NAME
           valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
+            secretKeyRef:
+              name: influxdb-db-name
+              key: database

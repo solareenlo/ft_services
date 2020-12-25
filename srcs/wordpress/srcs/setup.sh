@@ -59,5 +59,6 @@ mysql --host=$WORDPRESS_DB_HOST --user=root --password=$MYSQL_ROOT_PASSWORD < /t
 # chmod -R 755 /usr/src/
 # chown -R $USERNAME:$USERNAME /usr/src/wordpress
 
+telegraf &
 /usr/sbin/php-fpm7
 nginx -g "daemon off;"

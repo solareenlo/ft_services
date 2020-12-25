@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 12:34:42 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/24 01:30:23 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/25 14:10:31 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,22 @@ spec:
       - image: ft_services/influxdb:latest
         imagePullPolicy: Never
         name: influxdb
+        env:
+        - name: INFLUXDB_ADMIN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-admin-secret
+              key: username
+        - name: INFLUXDB_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-admin-secret
+              key: password
+        - name: INFLUXDB_DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-db-name
+              key: database
         ports:
         - containerPort: 8086
           name: influxdb
@@ -78,3 +94,22 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: influxdb-admin-secret
+stringData:
+  username: admin
+  password: password
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: influxdb-db-name
+stringData:
+  database: telegraf_metrics

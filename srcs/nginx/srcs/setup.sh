@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Start telegraf
-# telegraf &
+telegraf &
 
 /usr/sbin/php-fpm7
 

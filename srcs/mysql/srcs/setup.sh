@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Start telegraf
+telegraf &
+
 # MYSQL_ROOT_PASSWORD=password
 
 mysql_install_db --user=root --ldata=/var/lib/mysql

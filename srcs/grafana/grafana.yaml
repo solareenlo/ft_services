@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 23:55:03 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 16:55:13 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/28 10:25:44 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,16 @@ spec:
             secretKeyRef:
               name: influxdb-secret
               key: grafana-password
+        - name: INFLUXDB_TELEGRAF_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: telegraf-username
+        - name: INFLUXDB_TELEGRAF_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: telegraf-password
 
 ---
 

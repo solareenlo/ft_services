@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 15:05:18 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/22 17:38:15 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/28 10:34:07 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,21 @@ spec:
             secretKeyRef:
               name: ftps-secret
               key: password
+        - name: INFLUXDB_DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: db-name
+        - name: INFLUXDB_TELEGRAF_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: telegraf-username
+        - name: INFLUXDB_TELEGRAF_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-secret
+              key: telegraf-password
         volumeMounts:
         - name: wp-persistent-storage
           mountPath: /var/ftps

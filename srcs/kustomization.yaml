@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 19:32:07 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/24 01:14:19 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/28 10:14:39 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ resources:
   - ftps/ftps.yaml
   - grafana/grafana.yaml
   - influxdb/influxdb.yaml
-  - telegraf/telegraf.yaml
+  # - telegraf/telegraf.yaml
 
 # secretGenerator:
 # - name: mysql-pass

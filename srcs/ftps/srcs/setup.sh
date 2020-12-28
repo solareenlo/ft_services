@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Start telegraf
+telegraf &
+
 # FTPS_USER=admin
 # FTPS_PASSWORD=password
 # ADDRESS=192.168.99.10

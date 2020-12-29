@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 14:52:26 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:01:15 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 05:41:18 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,7 @@ RUN set -ex; \
     sed -i "s@define('CONFIG_DIR'.*@define('CONFIG_DIR', '/etc/phpmyadmin/');@" /var/www/html/libraries/vendor_config.php; \
     apk del --no-network .fetch-deps
 
-# Copy configuration
+# Copy phpmyadmin configuration
 COPY srcs/config.inc.php /etc/phpmyadmin/config.inc.php
 
 RUN touch /etc/phpmyadmin/config.secret.inc.php

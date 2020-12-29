@@ -1,14 +1,6 @@
 #!/bin/sh
 
-# Start telegraf
 telegraf &
-
-# FTPS_USER=admin
-# FTPS_PASSWORD=password
-# ADDRESS=192.168.99.10
-# MIN_PORT=21000
-# MAX_PORT=21005
-# ADDR_OPT="-opasv_address=$ADDRESS"
 
 mkdir -p /var/ftps
 # Create ftps user without creating a home directory

@@ -18,7 +18,6 @@ if [ -z "$(ls -A -- /var/lib/influxdb)" ]; then
     # Create grafana user with read privileges
     influx -execute "CREATE USER \"${INFLUXDB_GRAFANA_USERNAME}\" WITH PASSWORD '${INFLUXDB_GRAFANA_PASSWORD}'"
     influx -execute "GRANT READ ON \"${INFLUXDB_DATABASE}\" TO \"${INFLUXDB_GRAFANA_USERNAME}\""
-    # Shutdown influxd
 	pkill influxd
 fi
 

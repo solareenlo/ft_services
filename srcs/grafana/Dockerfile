@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 20:39:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:24:46 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 01:22:12 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,6 @@ RUN set -eux; \
 RUN mkdir /etc/grafana
 COPY srcs/custom.ini /usr/share/grafana/conf
 COPY srcs/telegraf-system-dashboard_rev4.json /var/lib/grafana/dashboards/home.json
-# RUN ln -sf /var/lib/grafana/dashboards/home.json /usr/share/grafana/public/dashboards/home.json
 COPY srcs/datasources.yaml /usr/share/grafana/conf/provisioning/datasources/
 COPY srcs/dashboards.yaml /usr/share/grafana/conf/provisioning/dashboards/
 

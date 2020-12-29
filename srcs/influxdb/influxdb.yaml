@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 12:34:42 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 22:33:40 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 01:19:11 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,8 @@ metadata:
   name: influxdb-service
   labels:
     app: influxdb
-  # annotations:
-  #   metallb.universe.tf/allow-shared-ip: "true"
 spec:
   type: ClusterIP
-  # type: LoadBalancer
   selector:
     app: influxdb
     tier: influxdb

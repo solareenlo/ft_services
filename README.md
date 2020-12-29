@@ -70,6 +70,9 @@ kill `cat /var/run/sshd.pid'
 ```
 
 # References
+## icon
+- [kubernetes/community/icons/](https://github.com/kubernetes/community/tree/master/icons)
+
 ## ftps
 - [パッシブモードのFTPS通信のFWの設定](https://www.replystudio.net/2014/10/ftpsfw.html)
 - [debian/unstable/manpages-ja/vsftpd.conf(5)](https://manpages.debian.org/unstable/manpages-ja/vsftpd.conf.5.ja.html)
@@ -99,6 +102,7 @@ kill `cat /var/run/sshd.pid'
 - [php extentions/wordpress](https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
 
 ### php
+- [nginx と PHP-FPM の仕組みをちゃんと理解しながら PHP の実行環境を構築する](https://qiita.com/kotarella1110/items/634f6fafeb33ae0f51dc)
 - [php/7.4/alpine3.12/fpm/Dockerfile](https://github.com/docker-library/php/blob/master/7.4/alpine3.12/fpm/Dockerfile)
 
 ### supervisor

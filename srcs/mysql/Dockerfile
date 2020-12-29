@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/11 21:38:53 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:31:14 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 05:55:00 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,8 +58,6 @@ EXPOSE 3306
 # Set mysql configuration
 COPY srcs/my.cnf /etc/
 COPY srcs/create_tables.sql /tmp/
-
-VOLUME /var/lib/mysql
 
 COPY srcs/setup.sh /tmp/
 RUN chmod +x /tmp/setup.sh

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Start telegraf
 telegraf &
 
 # MYSQL_ROOT_PASSWORD=password

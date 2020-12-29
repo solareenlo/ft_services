@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 21:42:24 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 06:59:02 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/29 17:33:20 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,14 +83,14 @@ RUN set -ex; \
 	rm /tmp/wordpress.tar.gz; \
 	chown -R nobody:nobody /usr/src/wordpress
 
-# Install WP CLI
+# Install WP-CLI
 RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
     chmod +x /usr/local/bin/wp
 
 # Set up wp-config
-# COPY srcs/wp-config.php /usr/src/wordpress
-# RUN chown nobody.nobody /usr/src/wordpress/wp-config.php && \
-# 	chmod 640 /usr/src/wordpress/wp-config.php
+COPY srcs/wp-config.php /usr/src/wordpress
+RUN chown nobody.nobody /usr/src/wordpress/wp-config.php && \
+	chmod 640 /usr/src/wordpress/wp-config.php
 
 # Add wp-secret-keys
 COPY srcs/wp-secret-keys.php /usr/src/wordpress

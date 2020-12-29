@@ -162,6 +162,8 @@ kill `cat /var/run/sshd.pid'
 
 ### WordPress
 - WordPress とは，オープンソースのブログを作るソフトウェアのこと．
+- [WordPress Roles and Capabilities](https://wordpress.org/support/article/roles-and-capabilities/)
+- [The command line interface for WordPress](https://wp-cli.org/ja/)
 - [combro2k/dockerfiles/alpine-nginx-wordpress-php7](https://github.com/combro2k/dockerfiles/tree/master/alpine-nginx-wordpress-php7)
 - [etopian/alpine-php-wordpress](https://github.com/etopian/alpine-php-wordpress)
 - [TrafeX/docker-wordpress](https://github.com/TrafeX/docker-wordpress)

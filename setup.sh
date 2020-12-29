@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:14:44 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 01:05:40 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,13 +27,12 @@ PODS+=(phpmyadmin)
 PODS+=(ftps)
 PODS+=(grafana)
 PODS+=(influxdb)
-# PODS+=(telegraf)
+PODS+=(telegraf)
 
 function docker_build()
 {
-	title="$(tr '[:lower:]' '[:upper:]' <<< ${1:0:1})${1:1}"
-	echo "🐳  Building Docker Image for ${title}"
-	docker build -t ft_services/$1 $2 ./srcs/$1 > /dev/null 2>&1
+	echo "🐳  Building Docker Image for $1"
+	docker build -t ft_services/$1 ./srcs/$1 > /dev/null 2>&1
 	return 0
 }
 

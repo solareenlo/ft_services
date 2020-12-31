@@ -1,11 +1,22 @@
 #!/bin/bash
 
+MAC_IP_ADDRESS=192.168.99
+VM_IP_ADDRESS=192.168.49
+
 OS="`uname`"
 if [[ $OS == "Linux" ]];
 then
 	DRIVER="docker"
+	sed -i -e 's/${MAC_IP_ADDRESS}/${VM_IP_ADDRESS}/' srcs/ftps/ftps.yaml
+	sed -i -e 's/${MAC_IP_ADDRESS}/${VM_IP_ADDRESS}/g' srcs/metallb/metallb.yaml
+	sed -i -e 's/${MAC_IP_ADDRESS}/${VM_IP_ADDRESS}/' srcs/wordpress/wordpress.yaml
+	sed -i -e 's/${MAC_IP_ADDRESS}/${VM_IP_ADDRESS}/' srcs/srcs/nginx/srcs/index.html
 else
 	DRIVER="virtualbox"
+	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/ftps/ftps.yaml
+	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/g' srcs/metallb/metallb.yaml
+	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/wordpress/wordpress.yaml
+	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/nginx/srcs/index.html
 fi
 
 PODS=(nginx)
@@ -65,8 +76,7 @@ done
 echo "⛵  Creating Deployments"
 kubectl apply -k srcs/ > /dev/null 2>&1
 for pod in "${PODS[@]}"; do
-	title="$(tr '[:lower:]' '[:upper:]' <<< ${pod:0:1})${pod:1}"
-	echo "🐋  $title Pod started!"
+	echo "🐋  $pod Pod started!"
 done
 
 # open dashboard

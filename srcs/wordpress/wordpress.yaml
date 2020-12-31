@@ -107,7 +107,7 @@ spec:
               name: influxdb-secret
               key: telegraf-password
         - name: WP_URL
-          value: "https://192.168.99.10:5050"
+          value: "https://192.168.49.10:5050"
         ports:
         - containerPort: 5050
           name: wordpress

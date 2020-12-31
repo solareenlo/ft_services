@@ -83,7 +83,7 @@ spec:
         - containerPort: 21005
         env:
         - name: ADDRESS
-          value: 192.168.99.10
+          value: 192.168.49.10
         - name: USERNAME
           valueFrom:
             secretKeyRef:

@@ -38,7 +38,7 @@
 		<br/>
 
 		<strong>Connect to nginx with ssh</strong>
-		<p><code>ssh admin@192.168.99.10 -p 22</code></p>
+		<p><code>ssh admin@192.168.49.10 -p 22</code></p>
 		<p><em>password: password</em></p>
 		<br>
 
@@ -48,9 +48,9 @@
 		<br/>
 
 		<strong>ftps</strong>
-		<p><code>lftp -e 'set ssl:verify-certificate false' -u username,password -p 21 192.168.99.10</code></p>
-		<p><code>lftp -d -e 'set ssl:verify-certificate false' -u username,password -p 21 192.168.99.10</code></p>
-		<p><code>curl -k --ftp-ssl --user username:password ftp://192.168.99.10:21</code></p>
+		<p><code>lftp -e 'set ssl:verify-certificate false' -u username,password -p 21 192.168.49.10</code></p>
+		<p><code>lftp -d -e 'set ssl:verify-certificate false' -u username,password -p 21 192.168.49.10</code></p>
+		<p><code>curl -k --ftp-ssl --user username:password ftp://192.168.49.10:21</code></p>
 		<br/>
 	</body>
 </html>

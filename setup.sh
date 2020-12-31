@@ -7,16 +7,18 @@ OS="`uname`"
 if [[ $OS == "Linux" ]];
 then
 	DRIVER="docker"
-	sed -i -e 's/${MAC_IP_ADDRESS}/${VM_IP_ADDRESS}/' srcs/ftps/ftps.yaml
-	sed -i -e 's/${MAC_IP_ADDRESS}/${VM_IP_ADDRESS}/g' srcs/metallb/metallb.yaml
-	sed -i -e 's/${MAC_IP_ADDRESS}/${VM_IP_ADDRESS}/' srcs/wordpress/wordpress.yaml
-	sed -i -e 's/${MAC_IP_ADDRESS}/${VM_IP_ADDRESS}/' srcs/srcs/nginx/srcs/index.html
+	sed -i -e 's/192.168.99/192.168.49/' srcs/ftps/ftps.yaml
+	sed -i -e 's/192.168.99/192.168.49/g' srcs/metallb/metallb.yaml
+	sed -i -e 's/192.168.99/192.168.49/' srcs/wordpress/wordpress.yaml
+	sed -i -e 's/192.168.99/192.168.49/' srcs/nginx/srcs/index.html
+	rm -f srcs/ftps/ftps.yaml-e srcs/metallb/metallb.yaml-e srcs/wordpress/wordpress.yaml-e srcs/nginx/srcs/index.html-e
 else
 	DRIVER="virtualbox"
 	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/ftps/ftps.yaml
 	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/g' srcs/metallb/metallb.yaml
 	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/wordpress/wordpress.yaml
 	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/nginx/srcs/index.html
+	rm -f srcs/ftps/ftps.yaml-e srcs/metallb/metallb.yaml-e srcs/wordpress/wordpress.yaml-e srcs/nginx/srcs/index.html-e
 fi
 
 PODS=(nginx)

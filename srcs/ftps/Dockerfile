@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 11:02:38 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:31:31 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 19:49:44 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ RUN set -eux; \
 
 # Set ftps configuration
 COPY srcs/vsftpd.conf /etc/vsftpd/
+RUN chmod 644 /etc/vsftpd/vsftpd.conf
 
 ENV MIN_PORT 21000
 ENV MAX_PORT 21005

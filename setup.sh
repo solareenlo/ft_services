@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    setup.sh                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/11/28 14:34:11 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/30 01:05:40 by tayamamo         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #!/bin/bash
 
 OS="`uname`"
@@ -59,12 +47,6 @@ minikube delete
 
 # start minikube
 minikube start --driver=$DRIVER --disk-size=5000mb
-
-# Delete metallb
-# kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
-# kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
-# kubectl delete -f srcs/metallb/metallb.yaml
-
 
 # Install metallb
 echo "⚖️   Installing MetalLB"

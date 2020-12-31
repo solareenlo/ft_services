@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 15:05:18 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:34:07 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/31 10:51:37 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ spec:
         - containerPort: 21005
         env:
         - name: ADDRESS
-          value: 192.168.99.10
+          value: 192.168.49.10
         - name: USERNAME
           valueFrom:
             secretKeyRef:

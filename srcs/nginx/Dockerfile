@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/06 20:09:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:09:25 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 18:33:23 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ RUN set -eux; \
 COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
 COPY srcs/index.html /var/www/index.html
 COPY srcs/favicon.ico /var/www/favicon.ico
+RUN chmod 644 /var/www/index.html
 
 # Generate Self-Signed SSL certificate
 RUN set -eux; \

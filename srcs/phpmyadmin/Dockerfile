@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 14:52:26 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/30 05:41:18 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 18:30:04 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,7 @@ RUN set -ex; \
 
 # Copy phpmyadmin configuration
 COPY srcs/config.inc.php /etc/phpmyadmin/config.inc.php
+RUN chmod 644 /etc/phpmyadmin/config.inc.php
 
 RUN touch /etc/phpmyadmin/config.secret.inc.php
 

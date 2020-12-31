@@ -3,6 +3,17 @@
 ## Requirement
 
 ## Usage
+### Mac
+- /srcs/ftps/ftps.yaml -> 192.168.99.10
+- /srcs/metallb/metallb.yaml -> 192.168.99.10-192.168.99.15
+- /srcs/wordpress/wordpress.yaml -> "https://192.168.99.10:5050"
+- /srcs/srcs/nginx/srcs/index.html -> 192.168.99.10
+
+### Linux
+- /srcs/ftps/ftps.yaml -> 192.168.49.10
+- /srcs/metallb/metallb.yaml -> 192.168.49.10-192.168.49.15
+- /srcs/wordpress/wordpress.yaml -> "https://192.168.49.10:5050"
+- /srcs/srcs/nginx/srcs/index.html -> 192.168.49.10
 
 ## Commands
 ## ftps, lftp
@@ -74,7 +85,11 @@ kill `cat /var/run/sshd.pid'
 - [kubernetes/community/icons/](https://github.com/kubernetes/community/tree/master/icons)
 
 ## ftps
+- [ubuntuにポートを開放する方法](https://teratail.com/questions/154480)
+- [同じネットワーク内のサーバーにFTP接続できない](https://teratail.com/questions/47398)
+- [接続は成功するがファイル一覧が表示されない](https://github.com/ffftp/ffftp/issues/153#issuecomment-554836507)
 - [パッシブモードのFTPS通信のFWの設定](https://www.replystudio.net/2014/10/ftpsfw.html)
+- [VSFTPD.CONF](https://security.appspot.com/vsftpd/vsftpd_conf.html)
 - [debian/unstable/manpages-ja/vsftpd.conf(5)](https://manpages.debian.org/unstable/manpages-ja/vsftpd.conf.5.ja.html)
 - [man page of VSFTPD.CONF](https://linuxjm.osdn.jp/html/vsftpd/man5/vsftpd.conf.5.html)
 - [lavv17/lftp](https://github.com/lavv17/lftp)

@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 17:02:29 by tayamamo         ###   ########.fr        #
+#    Updated: 2020/12/30 18:16:03 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,8 @@ spec:
             secretKeyRef:
               name: influxdb-secret
               key: telegraf-password
+        - name: WP_URL
+          value: "https://192.168.49.10:5050"
         ports:
         - containerPort: 5050
           name: wordpress

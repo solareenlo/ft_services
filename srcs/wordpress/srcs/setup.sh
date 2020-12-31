@@ -38,7 +38,7 @@ rm /tmp/sql
 
 if ! $(wp user list --role=administrator --path=/usr/src/wordpress); then
 	wp core install \
-		--url=https://192.168.99.10:5050 \
+		--url=${WP_URL} \
 		--title=Example \
 		--admin_user=admin \
 		--admin_password=password \

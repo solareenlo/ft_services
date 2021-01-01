@@ -1,8 +1,5 @@
 #!/bin/bash
 
-MAC_IP_ADDRESS=192.168.99
-VM_IP_ADDRESS=192.168.49
-
 OS="`uname`"
 if [[ $OS == "Linux" ]];
 then
@@ -14,10 +11,10 @@ then
 	rm -f srcs/ftps/ftps.yaml-e srcs/metallb/metallb.yaml-e srcs/wordpress/wordpress.yaml-e srcs/nginx/srcs/index.html-e
 else
 	DRIVER="virtualbox"
-	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/ftps/ftps.yaml
-	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/g' srcs/metallb/metallb.yaml
-	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/wordpress/wordpress.yaml
-	sed -i -e 's/${VM_IP_ADDRESS}/${MAC_IP_ADDRESS}/' srcs/nginx/srcs/index.html
+	sed -i -e 's/192.168.49/192.168.99/' srcs/ftps/ftps.yaml
+	sed -i -e 's/192.168.49/192.168.99/g' srcs/metallb/metallb.yaml
+	sed -i -e 's/192.168.49/192.168.99/' srcs/wordpress/wordpress.yaml
+	sed -i -e 's/192.168.49/192.168.99/' srcs/nginx/srcs/index.html
 	rm -f srcs/ftps/ftps.yaml-e srcs/metallb/metallb.yaml-e srcs/wordpress/wordpress.yaml-e srcs/nginx/srcs/index.html-e
 fi
 

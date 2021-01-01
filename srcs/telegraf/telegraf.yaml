@@ -6,14 +6,14 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/23 22:09:34 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 16:53:42 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 05:33:03 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: telegraf-deployment
+  name: telegraf
   labels:
     app: telegraf
 spec:

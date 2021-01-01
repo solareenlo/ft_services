@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 15:05:18 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/31 10:51:37 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 05:32:25 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ftps-deployment
+  name: ftps
   labels:
     app: ftps
 spec:

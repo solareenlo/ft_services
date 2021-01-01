@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 23:55:03 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:25:44 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 05:32:32 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grafana-deployment
+  name: grafana
   labels:
     app: grafana
 spec:

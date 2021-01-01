@@ -6,16 +6,16 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/11 21:59:44 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/28 10:13:43 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 04:24:16 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-mysql
+  name: mysql-service
   labels:
-    app: wordpress
+    app: mysql
 spec:
   type: ClusterIP
   selector:
@@ -33,7 +33,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
   labels:
-    app: wordpress
+    app: mysql
 spec:
   accessModes:
   - ReadWriteOnce
@@ -46,9 +46,9 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-mysql
+  name: mysql-deployment
   labels:
-    app: wordpress
+    app: mysql
 spec:
   selector:
     matchLabels:

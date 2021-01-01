@@ -6,16 +6,16 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/18 15:48:18 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 04:07:28 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 04:23:39 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-phpmyadmin
+  name: phpmyadmin-service
   labels:
-    app: wordpress
+    app: phpmyadmin
   annotations:
     metallb.universe.tf/allow-shared-ip: "true"
 spec:
@@ -34,9 +34,9 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-phpmyadmin
+  name: phpmyadmin-deployment
   labels:
-    app: wordpress
+    app: phpmyadmin
 spec:
   selector:
     matchLabels:

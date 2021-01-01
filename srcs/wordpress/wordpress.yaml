@@ -6,14 +6,14 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/30 18:16:03 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 04:55:13 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress
+  name: wordpress-service
   labels:
     app: wordpress
   annotations:
@@ -49,7 +49,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress
+  name: wordpress-deployment
   labels:
     app: wordpress
 spec:
@@ -66,14 +66,14 @@ spec:
       initContainers:
       - name: init-mysql
         image: busybox:1.31
-        command: ['sh', '-c', "until nslookup wordpress-mysql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done"]
+        command: ['sh', '-c', "until nslookup mysql-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done"]
       containers:
       - image: ft_services/wordpress:latest
         imagePullPolicy: Never
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: wordpress-mysql
+          value: mysql-service
         - name: DATABASE_NAME
           value: wordpress
         - name: MYSQL_ROOT_PASSWORD

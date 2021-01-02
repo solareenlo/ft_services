@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 12:34:42 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 05:32:38 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:55:55 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,15 @@ spec:
         tier: influxdb
     spec:
       containers:
-      - image: ft_services/influxdb:latest
+      - name: influxdb
+        image: ft_services/influxdb:latest
         imagePullPolicy: Never
-        name: influxdb
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - /tmp/helthcheck.sh
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 5
         env:
         - name: INFLUXDB_ADMIN_USERNAME
           valueFrom:

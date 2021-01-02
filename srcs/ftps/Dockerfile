@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 11:02:38 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/30 19:49:44 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:23:43 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,10 @@ RUN set -eux; \
 # Set ftps configuration
 COPY srcs/vsftpd.conf /etc/vsftpd/
 RUN chmod 644 /etc/vsftpd/vsftpd.conf
+
+# Set healthcheck
+COPY srcs/healthcheck.sh /tmp/
+RUN chmod +x /tmp/healthcheck.sh
 
 ENV MIN_PORT 21000
 ENV MAX_PORT 21005

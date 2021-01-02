@@ -1,7 +1,5 @@
 #!/bin/sh
 
-telegraf &
-
 mkdir -p /var/ftps
 # Create ftps user without creating a home directory
 adduser -D --home /var/ftps/"$USERNAME" "$USERNAME"
@@ -10,6 +8,7 @@ chmod a+w /var/ftps/"$USERNAME"
 echo "$USERNAME:$PASSWORD" | chpasswd
 echo "$USERNAME" > /etc/vsftpd.chroot_list
 
+telegraf &
 /usr/sbin/vsftpd \
 	-opasv_min_port=$MIN_PORT \
 	-opasv_max_port=$MAX_PORT \

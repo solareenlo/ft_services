@@ -1,7 +1,5 @@
 #!/bin/sh
 
-telegraf &
-
 # MYSQL_ROOT_PASSWORD=password
 
 mysql_install_db --user=root --ldata=/var/lib/mysql
@@ -19,4 +17,5 @@ EOF
 /usr/bin/mysqld --user=root --bootstrap < /tmp/sql
 rm -f /tmp/create_tables.sql /tmp/sql
 
+telegraf &
 exec /usr/bin/mysqld --user=root

@@ -1,6 +1,6 @@
 #!/usr/bin/env ash
 
-if [ -z "$(ls -A -- /var/lib/influxdb)" ]; then
+if [ -z "$(ls -A /var/lib/influxdb)" ]; then
 	INFLUXDB_HTTP_BIND_ADDRESS=127.0.0.1:8086
 	INFLUXDB_HTTP_HTTPS_ENABLED=false
 	influxd &
@@ -21,4 +21,5 @@ if [ -z "$(ls -A -- /var/lib/influxdb)" ]; then
 	pkill influxd
 fi
 
+telegraf &
 influxd

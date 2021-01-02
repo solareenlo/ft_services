@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/18 15:48:18 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 05:32:57 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:55:33 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,15 @@ spec:
         tier: phpmyadmin
     spec:
       containers:
-      - image: ft_services/phpmyadmin:latest
+      - name: phpmyadmin
+        image: ft_services/phpmyadmin:latest
         imagePullPolicy: Never
-        name: phpmyadmin
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - /tmp/helthcheck.sh
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 5
         ports:
         - containerPort: 5000
           name: phpmyadmin

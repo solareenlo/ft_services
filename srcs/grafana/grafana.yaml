@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 23:55:03 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 05:32:32 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:56:02 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,12 @@ spec:
       - name: grafana
         image: ft_services/grafana:latest
         imagePullPolicy: Never
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - /tmp/helthcheck.sh
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 5
         ports:
         - containerPort: 3000
         env:

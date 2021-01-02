@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/23 22:09:34 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 05:33:03 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:55:25 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,15 @@ spec:
         app: telegraf
     spec:
       containers:
-      - image: ft_services/telegraf
+      - name: telegraf
+        image: ft_services/telegraf
         imagePullPolicy: Never
-        name: telegraf
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - /tmp/helthcheck.sh
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 5
         env:
         - name: INFLUXDB_DB_NAME
           valueFrom:

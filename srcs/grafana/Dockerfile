@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 20:39:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/31 13:35:09 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:23:32 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,10 @@ COPY srcs/custom.ini /usr/share/grafana/conf
 COPY srcs/telegraf-system-dashboard.json /var/lib/grafana/dashboards/home.json
 COPY srcs/datasources.yaml /usr/share/grafana/conf/provisioning/datasources/
 COPY srcs/dashboards.yaml /usr/share/grafana/conf/provisioning/dashboards/
+
+# Set healthcheck
+COPY srcs/healthcheck.sh /tmp/
+RUN chmod +x /tmp/healthcheck.sh
 
 EXPOSE 3000
 

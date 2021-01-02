@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/11 21:38:53 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/30 05:55:00 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:23:16 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,11 +53,15 @@ RUN set -eux; \
 			mysql \
 			mysql-client
 
-EXPOSE 3306
-
 # Set mysql configuration
 COPY srcs/my.cnf /etc/
 COPY srcs/create_tables.sql /tmp/
+
+# Set healthcheck
+COPY srcs/healthcheck.sh /tmp/
+RUN chmod +x /tmp/healthcheck.sh
+
+EXPOSE 3306
 
 COPY srcs/setup.sh /tmp/
 RUN chmod +x /tmp/setup.sh

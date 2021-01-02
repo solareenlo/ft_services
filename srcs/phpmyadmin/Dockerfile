@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 14:52:26 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/30 18:30:04 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:22:48 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ RUN set -eux; \
 			php7-curl php7-xml php7-mysqli php7-imap php7-pdo php7-pdo_mysql \
 			php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext \
 			php7-ldap php7-ctype php7-dom php7-session php7-mbstring \
-			curl bash openssl
+			curl openssl
 
 # Set up nginx
 COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
@@ -109,6 +109,10 @@ COPY srcs/config.inc.php /etc/phpmyadmin/config.inc.php
 RUN chmod 644 /etc/phpmyadmin/config.inc.php
 
 RUN touch /etc/phpmyadmin/config.secret.inc.php
+
+# Set healthcheck
+COPY srcs/healthcheck.sh /tmp/
+RUN chmod +x /tmp/healthcheck.sh
 
 EXPOSE 5000
 

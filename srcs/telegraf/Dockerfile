@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/23 22:39:35 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/25 04:39:01 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:20:10 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,5 +46,9 @@ RUN set -ex && \
 
 # Set telegraf configuration
 COPY srcs/telegraf.conf /etc/telegraf/
+
+# Set healthcheck
+COPY srcs/healthcheck.sh /tmp/
+RUN chmod +x /tmp/healthcheck.sh
 
 CMD ["telegraf"]

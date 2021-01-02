@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/06 20:09:46 by tayamamo          #+#    #+#              #
-#    Updated: 2020/12/30 18:33:23 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 18:22:55 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,10 @@ RUN set -eux; \
 
 # Set up sshd_config
 COPY srcs/sshd_config /etc/ssh/
+
+# Set healthcheck
+COPY srcs/healthcheck.sh /tmp/
+RUN chmod +x /tmp/healthcheck.sh
 
 EXPOSE 80 443 22
 

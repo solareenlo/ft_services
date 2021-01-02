@@ -215,8 +215,8 @@ kill `cat /var/run/sshd.pid'
 - [〔パスワード認証：rootログイン許可〕](http://bluearth.cocolog-nifty.com/blog/2018/08/root-7716.html)
 
 ## k8s 関連
-### helth check
-- コンテナの helth check には，Liveness Probe か Readiness Probe か Startup Probe を使用する．
+### health check
+- コンテナの health check には，Liveness Probe か Readiness Probe か Startup Probe を使用する．
 - [シェルスクリプト - サービス起動確認！](https://www.mk-mode.com/blog/2013/08/22/shellscript-check-ps/#)
 - [Liveness Probe、Readiness ProbeおよびStartup Probeを使用する](https://kubernetes.io/ja/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 

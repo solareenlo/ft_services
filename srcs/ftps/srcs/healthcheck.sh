@@ -1,4 +1,11 @@
 #/bin/sh
 
-ps aux | grep telegraf || exit 1
-ps aux | grep vsftpd || exit 1
+count=`ps aux | grep telegraf | grep -v grep | wc -l`
+if [ $count = 0 ]; then
+	exit 1
+fi
+
+count=`ps aux | grep vsftpd | grep -v grep | wc -l`
+if [ $count = 0 ]; then
+	exit 1
+fi

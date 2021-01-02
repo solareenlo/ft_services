@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 20:05:46 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/03 05:29:45 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 500Mi
 
 ---
 
@@ -57,6 +57,8 @@ spec:
     matchLabels:
       app: wordpress
       tier: frontend
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:

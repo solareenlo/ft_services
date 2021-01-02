@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 21:42:24 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 18:18:59 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/03 03:51:35 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,11 +99,11 @@ RUN chown nobody:nobody /usr/src/wordpress/wp-secret-keys.php && \
 
 # Set healthcheck
 COPY srcs/healthcheck.sh /tmp/
-RUN chmod +x /tmp/healthcheck.sh
+RUN chmod u+x /tmp/healthcheck.sh
 
 EXPOSE 5050
 
 # Run CMD
 COPY srcs/setup.sh /tmp/setup.sh
-RUN chmod +x /tmp/setup.sh
+RUN chmod u+x /tmp/setup.sh
 CMD /tmp/setup.sh

@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/11 21:59:44 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 18:55:47 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 20:44:20 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,12 +64,13 @@ spec:
       - name: mysql
         image: ft_services/mysql:latest
         imagePullPolicy: Never
-        # livenessProbe:
-        #   exec:
-        #     command:
-        #     - /tmp/helthcheck.sh
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - /tmp/healthcheck.sh
+          initialDelaySeconds: 5
+          periodSeconds: 5
         ports:
         - containerPort: 3306
           name: mysql

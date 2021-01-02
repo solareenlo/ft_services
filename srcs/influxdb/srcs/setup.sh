@@ -21,5 +21,5 @@ if [ -z "$(ls -A /var/lib/influxdb)" ]; then
 	pkill influxd
 fi
 
-telegraf &
 influxd
+/usr/bin/telegraf &

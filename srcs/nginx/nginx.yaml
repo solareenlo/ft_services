@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 10:50:05 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 18:55:40 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 20:45:24 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,13 @@ spec:
       - name: nginx
         image: ft_services/nginx:latest
         imagePullPolicy: Never
-        # livenessProbe:
-        #   exec:
-        #     command:
-        #     - /tmp/helthcheck.sh
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - /tmp/healthcheck.sh
+          initialDelaySeconds: 5
+          periodSeconds: 5
         ports:
         - containerPort: 80
           name: http

@@ -19,8 +19,8 @@ else
 fi
 
 PODS=(nginx)
-PODS+=(mysql)
 PODS+=(wordpress)
+PODS+=(mysql)
 PODS+=(phpmyadmin)
 PODS+=(ftps)
 PODS+=(grafana)

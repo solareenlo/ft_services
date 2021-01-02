@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 18:55:16 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/02 20:05:46 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,13 +71,13 @@ spec:
       - name: wordpress
         image: ft_services/wordpress:latest
         imagePullPolicy: Never
-        # livenessProbe:
-        #   exec:
-        #     command:
-        #     - /bin/sh
-        #     - /tmp/helthcheck.sh
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - /tmp/healthcheck.sh
+          initialDelaySeconds: 5
+          periodSeconds: 5
         ports:
         - containerPort: 5050
           name: wordpress

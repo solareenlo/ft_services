@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -z "$(ls -A /var/lib/influxdb)" ]; then
-	influxd & until influx -execute exit </dev/null >/dev/null 2>&1; do sleep 0.2; echo -n '.'; done; echo
+	influxd & until influx -execute exit </dev/null >/dev/null 2>&1; do sleep 1; echo -n '.'; done
 	influx -execute "CREATE DATABASE ${INFLUXDB_DATABASE}"
     # Create admin user
     influx -execute "CREATE USER \"${INFLUXDB_ADMIN_USERNAME}\" WITH PASSWORD '${INFLUXDB_ADMIN_PASSWORD}' WITH ALL PRIVILEGES"

@@ -217,6 +217,8 @@ kill `cat /var/run/sshd.pid'
 ## k8s 関連
 ### health check
 - コンテナの health check には，Liveness Probe か Readiness Probe か Startup Probe を使用する．
+- [< /dev/null とは何なのか](https://qiita.com/jnuank/items/2555b90f99b880bbce29)
+- [&>/dev/null と >/dev/null の違い](https://qiita.com/kiyodori/items/a37cfc23f068a5c16b2c)
 - [シェルスクリプト - サービス起動確認！](https://www.mk-mode.com/blog/2013/08/22/shellscript-check-ps/#)
 - [Liveness Probe、Readiness ProbeおよびStartup Probeを使用する](https://kubernetes.io/ja/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 

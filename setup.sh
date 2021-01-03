@@ -25,7 +25,6 @@ PODS+=(phpmyadmin)
 PODS+=(ftps)
 PODS+=(grafana)
 PODS+=(influxdb)
-# PODS+=(telegraf)
 
 function docker_build()
 {

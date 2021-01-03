@@ -6,14 +6,13 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 14:52:26 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/02 18:22:48 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/03 12:30:12 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.12
 
 LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
-LABEL docker.group="wordpress-phpmyadmin"
 
 # Install telegraf
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf

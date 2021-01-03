@@ -21,9 +21,9 @@ curl -fs https://api.wordpress.org/secret-key/1.1/salt/ >> /usr/src/wordpress/wp
 
 # Check if volume is empty
 if [ ! "$(ls -A "/var/www/wp-content" > /dev/null 2>&1)" ]; then
-    # Copy wp-content from Wordpress src to volume
-    cp -r /usr/src/wordpress/wp-content /var/www/
-    chown -R nobody:nobody /var/www
+	# Copy wp-content from Wordpress src to volume
+	cp -r /usr/src/wordpress/wp-content /var/www/
+	chown -R nobody:nobody /var/www
 fi
 
 cat > /tmp/sql << EOF

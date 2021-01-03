@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/19 11:02:38 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/03 12:30:41 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/03 18:49:10 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
 # Install telegraf
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
 RUN apk add --no-cache iputils ca-certificates net-snmp-tools procps lm_sensors tzdata && \
-    update-ca-certificates
+	update-ca-certificates
 ENV TELEGRAF_VERSION 1.17.0
 RUN set -ex && \
 	mkdir ~/.gnupg; \

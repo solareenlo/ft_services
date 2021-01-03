@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 21:42:24 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/03 12:29:58 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/03 18:54:43 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LABEL Maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
 # Install telegraf
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
 RUN apk add --no-cache iputils ca-certificates net-snmp-tools procps lm_sensors tzdata && \
-    update-ca-certificates
+	update-ca-certificates
 ENV TELEGRAF_VERSION 1.17.0
 RUN set -ex && \
 	mkdir ~/.gnupg; \
@@ -84,7 +84,7 @@ RUN set -ex; \
 
 # Install WP-CLI
 RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x /usr/local/bin/wp
+	chmod +x /usr/local/bin/wp
 
 # Set up wp-config
 COPY srcs/wp-config.php /usr/src/wordpress

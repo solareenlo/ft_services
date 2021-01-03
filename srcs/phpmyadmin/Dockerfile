@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 14:52:26 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/03 12:30:12 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/03 18:53:41 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LABEL maintainer="tayamamo <tayamamo@student.42tokyo.jp>"
 # Install telegraf
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
 RUN apk add --no-cache iputils ca-certificates net-snmp-tools procps lm_sensors tzdata && \
-    update-ca-certificates
+	update-ca-certificates
 ENV TELEGRAF_VERSION 1.17.0
 RUN set -ex && \
 	mkdir ~/.gnupg; \
@@ -73,35 +73,35 @@ ENV SHA256 1578c1a08e594da4f4f62e676ccbdbd17784c3de769b094ba42c35bf05c057db
 ENV URL https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-all-languages.tar.xz
 
 RUN set -ex; \
-    apk add --no-cache --virtual .fetch-deps \
-        gnupg \
-    ; \
-    \
-    export GNUPGHOME="$(mktemp -d)"; \
-    export GPGKEY="3D06A59ECE730EB71B511C17CE752F178259BD92"; \
-    curl -fsSL -o phpMyAdmin.tar.xz $URL; \
-    curl -fsSL -o phpMyAdmin.tar.xz.asc $URL.asc; \
-    echo "$SHA256 *phpMyAdmin.tar.xz" | sha256sum -c -; \
-    gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPGKEY" \
-        || gpg --batch --keyserver ipv4.pool.sks-keyservers.net --recv-keys "$GPGKEY" \
-        || gpg --batch --keyserver keys.gnupg.net --recv-keys "$GPGKEY" \
-        || gpg --batch --keyserver pgp.mit.edu --recv-keys "$GPGKEY" \
-        || gpg --batch --keyserver keyserver.pgp.com --recv-keys "$GPGKEY"; \
-    gpg --batch --verify phpMyAdmin.tar.xz.asc phpMyAdmin.tar.xz; \
+	apk add --no-cache --virtual .fetch-deps \
+		gnupg \
+	; \
+	\
+	export GNUPGHOME="$(mktemp -d)"; \
+	export GPGKEY="3D06A59ECE730EB71B511C17CE752F178259BD92"; \
+	curl -fsSL -o phpMyAdmin.tar.xz $URL; \
+	curl -fsSL -o phpMyAdmin.tar.xz.asc $URL.asc; \
+	echo "$SHA256 *phpMyAdmin.tar.xz" | sha256sum -c -; \
+	gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPGKEY" \
+		|| gpg --batch --keyserver ipv4.pool.sks-keyservers.net --recv-keys "$GPGKEY" \
+		|| gpg --batch --keyserver keys.gnupg.net --recv-keys "$GPGKEY" \
+		|| gpg --batch --keyserver pgp.mit.edu --recv-keys "$GPGKEY" \
+		|| gpg --batch --keyserver keyserver.pgp.com --recv-keys "$GPGKEY"; \
+	gpg --batch --verify phpMyAdmin.tar.xz.asc phpMyAdmin.tar.xz; \
 	mkdir -p /var/www/html; \
-    tar -xf phpMyAdmin.tar.xz -C /var/www/html --strip-components=1; \
-    mkdir -p /var/www/html/tmp; \
-    chown nobody:nobody /var/www/html/tmp; \
-    gpgconf --kill all; \
-    rm -r "$GNUPGHOME" phpMyAdmin.tar.xz phpMyAdmin.tar.xz.asc; \
-    rm -rf /var/www/html/setup/\
-		   /var/www/html/examples/\
-		   /var/www/html/test/\
-		   /var/www/html/po/\
-		   /var/www/html/composer.json\
-		   /var/www/html/RELEASE-DATE-$VERSION; \
-    sed -i "s@define('CONFIG_DIR'.*@define('CONFIG_DIR', '/etc/phpmyadmin/');@" /var/www/html/libraries/vendor_config.php; \
-    apk del --no-network .fetch-deps
+	tar -xf phpMyAdmin.tar.xz -C /var/www/html --strip-components=1; \
+	mkdir -p /var/www/html/tmp; \
+	chown nobody:nobody /var/www/html/tmp; \
+	gpgconf --kill all; \
+	rm -r "$GNUPGHOME" phpMyAdmin.tar.xz phpMyAdmin.tar.xz.asc; \
+	rm -rf /var/www/html/setup/\
+		/var/www/html/examples/\
+		/var/www/html/test/\
+		/var/www/html/po/\
+		/var/www/html/composer.json\
+		/var/www/html/RELEASE-DATE-$VERSION; \
+	sed -i "s@define('CONFIG_DIR'.*@define('CONFIG_DIR', '/etc/phpmyadmin/');@" /var/www/html/libraries/vendor_config.php; \
+	apk del --no-network .fetch-deps
 
 # Copy phpmyadmin configuration
 COPY srcs/config.inc.php /etc/phpmyadmin/config.inc.php

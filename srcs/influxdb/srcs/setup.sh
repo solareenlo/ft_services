@@ -1,12 +1,8 @@
-#!/usr/bin/env ash
+#!/bin/sh
 
 if [ -z "$(ls -A /var/lib/influxdb)" ]; then
-	INFLUXDB_HTTP_BIND_ADDRESS=127.0.0.1:8086
-	INFLUXDB_HTTP_HTTPS_ENABLED=false
-	influxd &
-	until influx -host 127.0.0.1 -port 8086 -execute "CREATE DATABASE ${INFLUXDB_DATABASE}"; do
-		echo waiting for influxdb; sleep 1;
-	done
+	influxd & until influx -execute exit </dev/null >/dev/null 2>&1; do sleep 0.2; echo -n '.'; done; echo
+	influx -execute "CREATE DATABASE ${INFLUXDB_DATABASE}"
     # Create admin user
     influx -execute "CREATE USER \"${INFLUXDB_ADMIN_USERNAME}\" WITH PASSWORD '${INFLUXDB_ADMIN_PASSWORD}' WITH ALL PRIVILEGES"
     # Authenticate as admin
@@ -16,10 +12,10 @@ if [ -z "$(ls -A /var/lib/influxdb)" ]; then
     influx -execute "CREATE USER \"${INFLUXDB_TELEGRAF_USERNAME}\" WITH PASSWORD '${INFLUXDB_TELEGRAF_PASSWORD}'"
     influx -execute "GRANT WRITE ON \"${INFLUXDB_DATABASE}\" TO \"${INFLUXDB_TELEGRAF_USERNAME}\""
     # Create grafana user with read privileges
-    influx -execute "CREATE USER \"${INFLUXDB_GRAFANA_USERNAME}\" WITH PASSWORD '${INFLUXDB_GRAFANA_PASSWORD}'"
+	influx -execute "CREATE USER \"${INFLUXDB_GRAFANA_USERNAME}\" WITH PASSWORD '${INFLUXDB_GRAFANA_PASSWORD}'"
     influx -execute "GRANT READ ON \"${INFLUXDB_DATABASE}\" TO \"${INFLUXDB_GRAFANA_USERNAME}\""
 	pkill influxd
 fi
 
-/usr/bin/telegraf &
+telegraf &
 influxd

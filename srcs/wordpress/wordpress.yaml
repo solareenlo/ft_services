@@ -6,7 +6,7 @@
 #    By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/10 18:19:51 by tayamamo          #+#    #+#              #
-#    Updated: 2021/01/03 05:29:45 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/01/06 02:43:05 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,8 +78,8 @@ spec:
             command:
             - /bin/sh
             - /tmp/healthcheck.sh
-          initialDelaySeconds: 5
-          periodSeconds: 5
+          initialDelaySeconds: 60
+          periodSeconds: 10
         ports:
         - containerPort: 5050
           name: wordpress
